@@ -7,6 +7,10 @@
             <a href="/login">login</a>
             <a href="/register">register</a>
             <a href="/dashboard">dashboard</a>
+            <a href="/sample">sample</a>
+            <a href="/signup">signup</a>
+            <a href="/signin"> signin</a>
+        
         </div>
         
     </div>
