@@ -1,4 +1,18 @@
 <?php require_once 'include/headers.php'?>
+
+<?php 
+  if(!isset($_SESSION)) 
+  { 
+      session_start(); 
+     
+  } 
+  if(isset($_SESSION['login_error']) && $_SESSION['login_error']){
+      echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                         '<strong>".$_SESSION['login_error']."</strong>', Try Again.
+                        </div>  <div class='text-center'>
+                      </div>";
+  }
+  ?>
 <div class="container col-5 mt-3 p-4 shadow">
 <form action="/process-login.php" novalidate="" method="POST">
   <div class="row mb-3">
