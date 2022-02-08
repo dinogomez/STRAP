@@ -1,271 +1,108 @@
-body{
-    margin: 0;
-    background-image: url("../img/background-landing.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
+.navbar-brand{
+    color: white !important;
+    font-size: 32px;
+    font-weight: bold;
 }
-section{
-    margin-left: 80px;
-}
-h5{
-    color: white;
-    font-family: 'M PLUS 1p', sans-serif;
-    font-size: 12px;
-    margin-top: 144px;
-}
-figure{
-    margin-top: 20px;
-    text-align: center;
-}
-/* NAVBAR */
-.logo-container{
-    align-self: center;
-    
-}
-.navbar-container{
-    font-family: 'M PLUS 1p', sans-serif;
-    color: #362222;
-    margin: 40px 0 30px 30px;
-    display: flex;
-    align-items: center;
-    justify-content:space-around;
-
- 
-}
-.nav-navbar{
-
-    display: flex;
-  
-}
-.logo{
-
-    align-self: baseline;
-}
-.title{
-
-    font-size: 24px;
-    font-weight: 900;
-}
-
-.nav-item{
-    font-size: 15px;
-    font-weight: 800;
-    margin-left: 30px;
-    margin-right: 150px;
-    list-style: none;          
-    width: auto;
-}
-
-.btn{
-    font-family: 'M PLUS 1p', sans-serif;
-    font-size: 20px;
+.login-button{
     text-decoration: none;
-    margin-right: 15px;
-    color: white;
-    align-self: center;
-    justify-content: center;
 }
-.signup{
-    padding: 10px 20px;
-    height: 39px;
-    width: 400px;
-    background-color: #2B4F60BF;
-    
-    border-radius: 36px;
-}
-.nav-container{
-    display: flex;
-}
-/* END OF NAVBAR */
-
-
-/* WHAT WE DO PART */
-
-.hero-section{
-    overflow: auto;
-    height: 787px;
-    display: flex;
-    margin: 144px 0 33px 0;
-    margin-left: 80px;
-    
-}
-@media(max-width: 1900px){
-    .hero-section{
-        height: 609px;
-    }
+.nav-item-link{
+    color: white !important;
+    margin-left: 100px;
+    font-weight: bold;
 }
 
-.header-container{
-    margin-left: 30px;
+.what-we-do{
+    margin-top: 144px;
+    font-size: 20px;
 }
-.header{
-    margin: 0;
-    font-family: 'M PLUS 1p', sans-serif;
+.jumbotron{
+    height: 900px;
+    background-image: url('../img/background-landing.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
 }
-.intro-header{
-    line-height: 30px;
-    font-weight: 800;
-    font-size: 14px;
-}
-.desc-header{
-    font-size: 103px;
-    width: 700px;
+.jumbotron-header{
+    font-size: 100px;
 }
 
-/* END OF WHAT WE DO PART */
-
-
-/* ABOUT US SECTION */
-
-.about-us{
-    display: flex;
-}
-
-.about-img{
+.jumbotron-container{
+    width: 800px;
     
+}
+
+.about-us-section{
+    height: 950px;
+    background-color:#2B4F60;
+    color: white;
+}
+.aboutus{
+    font-size: 20px;
+}
+
+.aboutus-header{
+    font-size: 50px;
+}
+
+.aboutus-desc{
+    margin-top: 112px;
+    font-size: 25px;
+}
+
+.about-us-img{
+    margin-top: 90px;
+    margin-left: 90px;
+}
+
+.about-button{
+    font-size: 24px;
     margin-top: 200px;
 }
-.about-img-container{
-    margin-left: 420px;
-}
-.about-img-desc{
-    font-family: 'M PLUS 1p', sans-serif;
-    width: 200px;
-    margin-left: 210px;
-    font-weight: bold;
-    color: #2B4F60;
-}
-.bg-about{
-    position: absolute;
-    height: 1200px;
-    width: 1200px;
-    z-index: -1;
-    /* background-color:#845460; */
-    background-color: #2B4F60;
+
+.features-section{
+    height: 500px;
+    background-color: #845460;
     
 }
 
-.about-name{
-    font-family: 'M PLUS 1p', sans-serif;
+.feature-header{
+    padding-top: 60px;
     color: white;
-    font-size: 45px;
-    width: 500px;
-}
-
-.about-desc{
-    font-family: 'M PLUS 1p', sans-serif;
-    color: white;
-    margin-top: 110px;
-    margin-bottom: 50px;
-    font-size: 24px;
-    width: 500px;
-}
-
-.p2{
-    margin-top: 100px;
-    margin-bottom: 250px;
-}
-
-.about-btn{
-    font-family: 'M PLUS 1p', sans-serif;
-    text-decoration: none;
-    margin-right: 15px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 40px;
-    padding-right: 40px;
-    border-radius: 100px;
-    background-color: white;
-    font-weight: bold;
-    align-self: center;
-    justify-content: center;
-}
-
-/* END OF ABOUT US */
-
-/* OBJECTIVES SECTION */
-
-
-.objectives-section{
-    margin: 0;
-    height: 600px;
-    background-color:#845460;
-}
-
-.obj-header{
-    font-family: 'M PLUS 1p', sans-serif;
-    color: white;
-    font-weight: bold;
-    font-size: 41px;
     text-align: center;
-    margin-top: 30px;
-    padding-top: 120px;
 }
-.card-obj-container{
-    display: flex;
-    justify-content: center;
+.figure{
+    padding-top: 30px;
 }
-.card{
-    box-shadow: 0px 10px 10px;
-    background-color: #2B4F60;
+.box{
+    text-align: center;
     height: 231px;
     width: 345px;
-    margin-right: 60px;
-
-}
-
-.card-desc{
-    text-align: center;
-    font-family: 'M PLUS 1p', sans-serif;
-    font-size: 20px;
+    margin: 20px 20px 10px 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #2B4F60;
     color: white;
 }
-.card-info-container{
-    width: 318px;
-    margin-left: 14px;
-}
-.card-info{
-    font-family: 'M PLUS 1p', sans-serif;
-    color: white;
-    text-align: center;
+
+.box-header{
+    padding-top: 20px;
 }
 
-/* END OF OBJECTIVES SECTION */
+.box-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-
-/* FOOTER SECTION */
+.button-feature{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
 
 .footer-section{
-    margin: 0;
-    height: 350px;
-    background-color: #EAD3CB;
-    font-family: 'M PLUS 1p', sans-serif;
+    background-color: #EAD3CB !important;
 }
-
-.strap-desc{
-    width: 200px;
-}
-.header-div{
-    font-family: 'M PLUS 1p', sans-serif;
-    font-size: 20px;
-    padding-top: 80px;
-    font-weight: bold;
-    display: flex;
-    justify-content:space-around;
-    color: #845460;
-}
-
-.test{
-    display: flex;
-  
-    
-}
-
-.footer-items{
-    display: flex;
-    justify-content:space-evenly;
-    color: #845460;
-    font-weight: bold;
-}
-/* END OF FOOTER SECTION */
