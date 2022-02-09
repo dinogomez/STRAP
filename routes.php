@@ -8,7 +8,8 @@ get('/login', 'views/login.php');
 get('/register', 'views/register.php');
 get('/dashboard', 'views/dashboard.php');
 get('/about', 'views/about.php');
-
+get('/landing', 'views/landing.php');
+post('/process-login.php','server/process-login.php');
 
 // POST
 post('/process-login.php','server/process-login.php');

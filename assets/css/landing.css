@@ -1,0 +1,108 @@
+.navbar-brand{
+    color: white !important;
+    font-size: 32px;
+    font-weight: bold;
+}
+.login-button{
+    text-decoration: none;
+}
+.nav-item-link{
+    color: white !important;
+    margin-left: 100px;
+    font-weight: bold;
+}
+
+.what-we-do{
+    margin-top: 144px;
+    font-size: 20px;
+}
+.jumbotron{
+    height: 900px;
+    background-image: url('../img/background-landing.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+.jumbotron-header{
+    font-size: 100px;
+}
+
+.jumbotron-container{
+    width: 800px;
+    
+}
+
+.about-us-section{
+    height: 950px;
+    background-color:#2B4F60;
+    color: white;
+}
+.aboutus{
+    font-size: 20px;
+}
+
+.aboutus-header{
+    font-size: 50px;
+}
+
+.aboutus-desc{
+    margin-top: 112px;
+    font-size: 25px;
+}
+
+.about-us-img{
+    margin-top: 90px;
+    margin-left: 90px;
+}
+
+.about-button{
+    font-size: 24px;
+    margin-top: 200px;
+}
+
+.features-section{
+    height: 500px;
+    background-color: #845460;
+    
+}
+
+.feature-header{
+    padding-top: 60px;
+    color: white;
+    text-align: center;
+}
+.figure{
+    padding-top: 30px;
+}
+.box{
+    text-align: center;
+    height: 231px;
+    width: 345px;
+    margin: 20px 20px 10px 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #2B4F60;
+    color: white;
+}
+
+.box-header{
+    padding-top: 20px;
+}
+
+.box-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.button-feature{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-section{
+    background-color: #EAD3CB !important;
+}
