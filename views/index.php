@@ -1,6 +1,11 @@
 <?php require_once 'include/headers.php'?>
 
 
+<?php
+   session_destroy();
+?>
+
+
 <section class="jumbotron bg-image">
         <div class="mask" style="background-color: rgba(0, 0, 0, 0);"></div>
         <nav class="navbar navbar-expand-xl navbar-light">
@@ -80,7 +85,6 @@
         </div>
         <div class="button-feature">
             <button class="btn btn-sm btn-outline-light" type="button">Learn More</button>
-        </div>
         
     </section>
 
