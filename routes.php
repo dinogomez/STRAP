@@ -9,7 +9,12 @@ get('/register', 'views/register.php');
 get('/dashboard', 'views/dashboard.php');
 get('/about', 'views/about.php');
 get('/landing', 'views/landing.php');
-post('/process-login.php','server/process-login.php');
+
+get('/sample', 'views/sample.php');
+get('/about', 'views/about.php');
+get('/signin', 'views/signin.php');
+get('/signup', 'views/signup.php');
+
 
 // POST
 post('/process-login.php','server/process-login.php');
@@ -18,3 +23,4 @@ post('/process-logout.php' , 'server/process-logout.php');
 
 // ANY
 any('/404','views/404.php');
+
