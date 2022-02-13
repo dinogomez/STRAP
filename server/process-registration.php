@@ -1,6 +1,5 @@
 <?php
                 require_once 'db/connection.php';
-                require_once getcwd().'\views\include\headers.php';
                 session_start();
                 // REGISTRATION VARs
                 $username   =  $_POST['username'];
@@ -21,15 +20,15 @@
                     if ($count > 0) {
                       $_SESSION['register_duplicate'] = true;
                       $_SESSION['register_username'] = $username;
-                      header('Location: /register');
+                      header('Location: /signup');
                       die();
                     } 
                     
                     // Name checker, so only letters and space are accepted.
-                    if (!preg_match("/^[a-zA-Z ]+$/",$username)) {
+                    if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $username)) {
                       // $username_error = "Name must contain only alphabets and space";
                       $_SESSION['register_username'] = true;
-                      header('Location: /register');
+                      header('Location: /signup');
                       die();
                     }
 
@@ -37,7 +36,7 @@
                     if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
                       // $email_error = "Please Enter Valid Email ID";
                       $_SESSION['register_email'] = true;
-                      header('Location: /register');
+                      header('Location: /signup');
                       die();
                     }
 
@@ -45,7 +44,7 @@
                     if(strlen($password) < 8) {
                       // $password_error = "Password must be minimum of 8 characters";
                       $_SESSION['register_minimum'] = true;
-                      header('Location: /register');
+                      header('Location: /signup');
                       die();
                     }  
 
@@ -53,7 +52,7 @@
                     if ($password != $cpassword){
                       // $cpassword_error = "Password and Confirm Password doesn't match";
                       $_SESSION['register_confirm'] = true;
-                      header('Location: /register');
+                      header('Location: /signup');
                       die();
                     } 
 
@@ -81,7 +80,7 @@
                     $stmt->execute();
 
                     $stmt->close();
-                    header('Location: /login');
+                    header('Location: /signin');
   
                   } catch (Exception $e) {
                     echo $e->getMessage();

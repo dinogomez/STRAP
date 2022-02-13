@@ -39,7 +39,7 @@
 
       ?>
   
-  <form action="/process-registration.php" method="POST">
+  <form action="/process-registration" method="POST">
 
     <div class="row mb-3">
       <label for="username" class="col-sm-2 col-form-label">Username</label>

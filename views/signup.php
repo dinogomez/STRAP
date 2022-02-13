@@ -14,7 +14,40 @@
                 <img src="assets/img/strap-logo.png" alt="logo" class="logo">     
               </div>
               <p class="login-card-description">Get Started</p>
-              <form action="#!">
+              <?php 
+      if(!isset($_SESSION)) { 
+          session_start(); 
+      } 
+
+      if(isset($_SESSION['register_duplicate']) && $_SESSION['register_duplicate']){
+          echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                  Duplicate Username '<strong>".$_SESSION['register_username']."</strong>', Try Again.
+                </div>  
+                <div class='text-center'></div>";
+      } elseif (isset($_SESSION['register_username'])){
+          echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                  Name must contain only alphabets and space. Try Again.
+                </div>  
+                <div class='text-center'></div>";
+      } elseif (isset($_SESSION['register_email'])){
+          echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                  Please Enter Valid Email ID. Try Again.
+                </div>  
+                <div class='text-center'></div>";
+      } elseif (isset($_SESSION['register_minimum'])){
+          echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                  Password must be minimum of 8 characters. Try Again.
+                </div>  
+                <div class='text-center'></div>";
+      } elseif (isset($_SESSION['register_confirm'])){
+          echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                  Password and Confirm Password doesn't match. Try Again.
+                </div>  
+                <div class='text-center'></div>";
+      }
+
+      ?>
+              <form action="/process-registration" method="POST">
                   <div class="form-group">
                     <label for="username" class="sr-only">Username</label>
                     <input type="text" minlength="4" autocomplete="off" required name="username" id="username" class="form-control" placeholder="Username">
@@ -25,17 +58,18 @@
                   </div>
                   <div class="form-group">
                     <label for="address" class="sr-only">Address</label>
-                    <input type="email" minlength="4" autocomplete="off" required name="Address" id="Address" class="form-control" placeholder="Address">
+                    <input type="text" minlength="4" name="address" id="Address" class="form-control" placeholder="Address" required>
                   </div>
                   <div class="form-group">
                     <label for="password" class="sr-only">Password</label>
-                    <input type="text" minlength="4" autocomplete="off" required name="password" id="password" class="form-control" placeholder="Password">
+                    <input type="password" minlength="4" autocomplete="off"  name="password" id="password" class="form-control" placeholder="Password" required>
                   </div>
                   <div class="form-group">
                     <label for="confirm-password" class="sr-only">Confirm Password</label>
-                    <input type="text" minlength="4" autocomplete="off" required name="confirm-password" id="confirm-password" class="form-control" placeholder="Confirm Password">
+                    <input type="password" minlength="4" autocomplete="off"  name="cpassword" id="confirm-password" class="form-control" placeholder="Confirm Password" required>
                   </div>
-                  <input name="Create my Account" minlength="4" autocomplete="off" required id="login" class="btn btn-block login-btn mb-4" type="button" value="Create my Account">
+                  <button type="submit" class="btn btn-block login-btn mb-4">Create my Account</button>
+
                 </form>
                 <p>Already have an account?</p>
                 <a href="/signin" class="text-reset"><h4 id="sign-in">SIGN-IN HERE</h4></a>

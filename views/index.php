@@ -35,8 +35,8 @@
                  
               </div>
               <form class="d-flex">
-                    <button class="nav-button btn btn-light me-2" type="button"><a class="login-button" href="/login">Log In</a></button>
-                    <button class="btn btn-sm btn-primary" type="button">Sign Up</button>
+                    <button class="nav-button btn btn-light me-2" type="button"><a class="login-button" href="/signin">Log In</a></button>
+                    <a class="me-2 btn btn-primary" href="/signup" role="button">Sign Up</a>
                 </form>
             </div>
           </nav>
