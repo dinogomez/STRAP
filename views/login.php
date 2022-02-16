@@ -15,12 +15,12 @@
   ?>
 
 <div class="container col-5 mt-3 p-4 shadow">
-  <form action="/process-login.php" novalidate="" method="POST">
+  <form action="/process-login" novalidate="" method="POST">
 
     <div class="row mb-3">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+      <label for="username" class="col-sm-2 col-form-label">Username</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" name="email">
+        <input type="username" class="form-control" id="username" name="username">
       </div>
     </div>
 
