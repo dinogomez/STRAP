@@ -88,7 +88,7 @@
      line-height: var(--bs-body-line-height);
      color: var(--bs-body-color);
      text-align: var(--bs-body-text-align);
-     background-color: var(--bs-body-bg);
+     background-color: rgb(12, 12, 12) !important;
      -webkit-text-size-adjust: 100%;
      -webkit-tap-highlight-color: transparent
  }
@@ -8528,7 +8528,9 @@
  .fs-5 {
      font-size: calc(1.275rem + .3vw) !important
  }
- 
+ .fs-custom {
+    font-size: calc(1.4525rem + 2.10vw) !important
+}   
  
  .fs-6 {
      font-size: 1rem !important

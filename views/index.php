@@ -8,9 +8,9 @@
 ?>
 
 
-<div class="alert alert-dismissible alert-danger text-center">
+<div class="alert alert-dismissible alert-info text-center">
   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-  <strong>Warning!</strong> you are running on build <a href="#" class="alert-link">DEV/PreRelease</a>.
+  <strong>Information!</strong> you are running on build <a href="https://github.com/dinogomez/htdocs/tree/DEV/PreRelease_Branch" class="alert-link">DEV/PreRelease</a>.
 </div>
 
 
@@ -59,20 +59,227 @@
     </div>
   </div>
 </nav>
-<div class="container col-12">
 
-<div class="py-5 mt-5">
+<div class="container col-12">
+<div class="py-5 mt-3">
 <p class="fs-5 fw-normal m-0">👋 Welcome to,</p>
 
         <!-- <h1 class="display-6 fw-bold"><span class="text-info">S</span>pecialized <span class="text-info">TRA</span>cker for <span class="text-info">P</span>ets (STRAP)</h1> -->
-        <h1 class="col-md-9 display-4 fw-bold lh-sm-1">Specialized Tracker For Pets</h1>
+        <h1 class="col-md-9 display-4 fw-bolder lh-sm-1">Specialized Tracker For Pets</h1>
         <!--  -->
         <p class="col-md-8 fontsize-sh text-justify">It aims to provide real-time data location to the pets of the owner by using a Global Positioning System (GPS) collars. Also, it is a platform for pet owners to store their pet’s identification information.</p>
         <a class="col-md-8 fs-5" href="/about">Read More</a>
 </div>
 </div>
+<hr>
+<div class="container my-5">
+
+<h1 class="display-6 fw-bold">Our Objectives ✅</h1>
+<p class="fs-5">&nbspThese are the goals we hope to achieve.</p>
+<!-- <div class="row row-cols-1 row-cols-md-3 g-3">
+  <div class="col-12">
+    <div class="card border-gradient-one card-uni" style="min-height:100px;">
+      <div class="card-body">
+        <h5 class="card-title">Web</h5>
+        <p class="card-text">To build a GPS collar using Arduino for real-time data location of the pets.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card border-gradient-two card-uni" >
+    <div class="card-body mx-3">
+        <h5 class="card-title">Web Application</h5>
+        <p class="card-text">To create a web application that stores the pet’s identification information.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card border-gradient-three card-uni">
+    <div class="card-body mx-3">
+        <h5 class="card-title">Quick Response Code</h5>
+        <p class="card-text ">To allow users to access the pet’s personal information using a QR code from the   collar.</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="row mt-4">
+  <div class="col-sm-4">
+    <div class="card border-gradient-one">
+      <div class="card-body mx-2">
+        <h5 class="card-title">GPS Collar 🐕</h5>
+        <p class="card-text">To build a GPS collar using Arduino for real-time data location of the pets.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card border-gradient-two">
+      <div class="card-body mx-2">
+        <h5 class="card-title">Web Application 🌐</h5>
+        <p class="card-text">To create a web application that stores the pet’s identification information.</p>
+      </div>
+    </div>
+  </div>  
+  <div class="col-sm-4">
+    <div class="card border-gradient-three">
+      <div class="card-body mx-2">
+        <h5 class="card-title">Quick Response Codes 🔗</h5>
+        <p class="card-text">To embed the pet's personal information for identification on the QR Code.</p>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="mt-4">
+  <p class="text-justify fs-6 lh-lg">
+    The purpose of this project is to develop an application that will help track and monitor pets, including the ability to see the basic information of other pets through the use of QR scanning on the collar. Instead of posting banners and social media posts when the user’s pet is lost. The user can now refer to the web application where he can track the current location via GPS. When a pet is lost, a bystander can scan the QR code to see the pet’s details and also the owner’s details like name and contact number to help with its return.
+  </p>
+  </div>
+</div>
+<hr>
+<div class="container my-5">
+
+<h1 class="display-6 fw-bold">Our Team 👨🏼‍💻</h1>
+<p class="fs-5">&nbspThe following individuals are the developers and creators of STRAP.</p>
+
+<div class="container my-4">
+<div class="d-flex border p-3 my-2">
+    <img src="assets/img/pol_avatar.png" alt="Dino Gomez"
+         class="shadow flex-shrink-0 me-4 mx-2 rounded" style="width:100px;height:100px;">
+    <div>
+        <h4 class="m-0 lh-sm">Dino Paulo Gomez</h4>
+        <small class="text-muted">Technical Lead, Backend and Hardware Developer</small>
+        <p class="lh-lg">I'm glad that I got to experience building this project where I got to meet and collaborate with other developers.</p>
+    </div>
+</div>
+<div class="d-flex border p-3 my-2">
+    <img src="assets/img/leonard_avatar.jpeg" alt="Leonard Rada"
+         class="shadow flex-shrink-0 me-4 mx-2 rounded" style="width:100px;height:100px;">
+    <div>
+        <h4 class="m-0 lh-sm">John Leonard Rada</h4>
+        <small class="text-muted">Backend and Database Developer</small>
+        <p class="lh-lg">I'm glad that I got to experience building this project where I got to meet and collaborate with other developers.</p>
+    </div>
+</div>
+<div class="d-flex border p-3 my-2">
+    <img src="assets/img/owen_avatar.png" alt="Owen Clamor"
+         class="shadow flex-shrink-0 me-4 mx-2 rounded" style="width:100px;height:100px;">
+    <div>
+        <h4 class="m-0 lh-sm">Owen Jorelle Clamor</h4>
+        <small class="text-muted">Frontend Developer and Design</small>
+        <p class="lh-lg">I'm glad that I got to experience building this project where I got to meet and collaborate with other developers.</p>
+    </div>
+</div>
+<div class="d-flex border p-3 my-2">
+    <img src="assets/img/francis_avatar.jpeg" alt="Francis Parreñas"
+         class="shadow flex-shrink-0 me-4 mx-2 rounded" style="width:100px;height:100px;">
+    <div>
+        <h4 class="m-0 lh-sm">Francis Geofrey Parreñas</h4>
+        <small class="text-muted">Frontend Lead Developer</small>
+        <p class="lh-lg">I'm glad that I got to experience building this project where I got to meet and collaborate with other developers.</p>
+    </div>
+</div>
 
 
+</div>
+
+
+</div>
+<div class="my-5 py-5"></div>
+<hr>
+<footer class="footer-section text-center text-lg-start bg-light text-muted">
+    <!-- Section: Social media -->
+    
+  
+      <!-- Left -->
+  
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+  
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            
+            <h6 class="text-uppercase fw-bold mb-4">
+                <img src="img/strap logo.png" alt="">
+              <i class="fas fa-gem me-3"></i>STRAP
+            </h6>
+            <p>
+                aims to provide real-time data location to the pets of the owner by using a Global Positioning System (GPS) collars. 
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                Menu
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Home</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">About</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Services</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Contact</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                Contact
+            </h6>
+            
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              STRAP@examplegmail.com
+            </p>
+            
+            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+  </footer>
+  <!-- Footer -->
 <!-- NAV -->
 <!-- MAIN CONTAINER -->
 </div>
