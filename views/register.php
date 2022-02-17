@@ -6,36 +6,36 @@
   </div>
   <div class="mt-3">
       <?php 
-      // if(!isset($_SESSION)) { 
-      //     session_start(); 
-      // } 
+      if(!isset($_SESSION)) { 
+          session_start(); 
+      } 
 
-      // if(isset($_SESSION['register_duplicate']) && $_SESSION['register_duplicate']){
-      //     echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
-      //             Duplicate Username '<strong>".$_SESSION['register_username']."</strong>', Try Again.
-      //           </div>  
-      //           <div class='text-center'></div>";
-      // } elseif (isset($_SESSION['register_username'])){
-      //     echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
-      //             Name must contain only alphabets and space. Try Again.
-      //           </div>  
-      //           <div class='text-center'></div>";
-      // } elseif (isset($_SESSION['register_email'])){
-      //     echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
-      //             Please Enter Valid Email ID. Try Again.
-      //           </div>  
-      //           <div class='text-center'></div>";
-      // } elseif (isset($_SESSION['register_minimum'])){
-      //     echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
-      //             Password must be minimum of 8 characters. Try Again.
-      //           </div>  
-      //           <div class='text-center'></div>";
-      // } elseif (isset($_SESSION['register_confirm'])){
-      //     echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
-      //             Password and Confirm Password doesn't match. Try Again.
-      //           </div>  
-      //           <div class='text-center'></div>";
-      // }
+      if(isset($_SESSION['register_duplicate']) && $_SESSION['register_duplicate']){
+          echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                  Duplicate Username '<strong>".$_SESSION['register_username']."</strong>', Try Again.
+                </div>  
+                <div class='text-center'></div>";
+      } elseif (isset($_SESSION['register_username'])){
+          echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                  Name must contain only alphabets and space. Try Again.
+                </div>  
+                <div class='text-center'></div>";
+      } elseif (isset($_SESSION['register_email'])){
+          echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                  Please Enter Valid Email ID. Try Again.
+                </div>  
+                <div class='text-center'></div>";
+      } elseif (isset($_SESSION['register_minimum'])){
+          echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                  Password must be minimum of 8 characters. Try Again.
+                </div>  
+                <div class='text-center'></div>";
+      } elseif (isset($_SESSION['register_confirm'])){
+          echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                  Password and Confirm Password doesn't match. Try Again.
+                </div>  
+                <div class='text-center'></div>";
+      }
 
       ?>
   

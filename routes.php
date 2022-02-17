@@ -4,6 +4,7 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 
 // GET
 get('/', 'views/index.php');
+get('/627', 'views/s.php');
 get('/login', 'views/login.php');
 get('/register', 'views/register.php');
 get('/dashboard', 'views/dashboard.php');
