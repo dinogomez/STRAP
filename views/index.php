@@ -4,9 +4,21 @@
     
         
 <?php
-   session_destroy();
-?>
 
+?>
+<?php 
+  if(!isset($_SESSION)) 
+  { 
+      session_start(); 
+     
+  } 
+  if(isset($_SESSION['login_error']) && $_SESSION['login_error']){
+      echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                         '<strong>".$_SESSION['login_error']."</strong>', Try Again.
+                        </div>  <div class='text-center'>
+                      </div>";
+  }
+  ?>
 
 <div class="alert alert-dismissible alert-info text-center">
   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -54,11 +66,110 @@
       </ul>
       <form class="d-flex">
         <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-info my-2 my-sm-0 px-5" type="submit">Login</button>
+        <a class="btn btn-outline-info my-2 my-sm-0 px-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
       </form>
     </div>
   </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: 0 none;">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="text-center">
+          <h1 class="display-5 fw-bold">Login</h1>
+
+          </div>
+          <hr>
+          <form action="/process-login" method="post">
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Username</label>
+        <input type="text" name="username"class="form-control" id="formControlInput">
+        </div>
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="formControlInput" autocomplete="off">
+        </div>
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="formCheckDefault">
+        <label class="form-check-label text-secondary" for="formCheckDefault">Remember Me</label>
+      </div>
+        <hr>
+        <button type="submit" class="mt-2 btn btn-md w-100 btn-info shadow">Login</button>
+        </form>
+        <div class="text-center mt-3 ">
+          <a href="" class="text-primary nav-link">Forgot Password?</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+          <span class="text-secondary">Dont have an account? <a class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Create Account</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Register -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: 0 none;">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="text-center">
+          <h1 class="display-5 fw-bold">Sign Up!</h1>
+
+          </div>
+          <hr>
+          <form action="/process-register" method="post">
+            
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Username</label>
+        <input type="text" name="username"class="form-control" id="formControlInput" require>
+        </div>
+
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Email</label>
+        <input type="email" name="email"class="form-control" id="formControlInput" require>
+        </div>
+
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Address</label>
+        <input type="text" name="address"class="form-control" id="formControlInput" require>
+        </div>
+
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="formControlInput" require>
+        </div>
+
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Confirm Password</label>
+        <input type="password" name="cpassword" class="form-control" id="formControlInput" require>
+        </div>
+     
+        <hr>
+        <button type="submit" class="mt-2 btn btn-md w-100 btn-info shadow">Login</button>
+        </form>
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+          <span class="text-secondary">Already have an account? <a class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign In!</a></span>
+      </div>
+    
+    </div>
+  </div>
+</div>
 
 <div class="container col-12">
 <div class="py-5 mt-3">
@@ -103,26 +214,28 @@
   </div>
 </div> -->
 
-<div class="row mt-4">
-  <div class="col-sm-4">
-    <div class="card border-gradient-one">
-      <div class="card-body mx-2">
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100 border-gradient-one">
+      <div class="card-body">
         <h5 class="card-title">GPS Collar 🐕</h5>
         <p class="card-text">To build a GPS collar using Arduino for real-time data location of the pets.</p>
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
-    <div class="card border-gradient-two">
-      <div class="card-body mx-2">
+  <div class="col">
+    <div class="card h-100 border-gradient-two">
+      <div class="card-body">
         <h5 class="card-title">Web Application 🌐</h5>
         <p class="card-text">To create a web application that stores the pet’s identification information.</p>
       </div>
     </div>
-  </div>  
-  <div class="col-sm-4">
-    <div class="card border-gradient-three">
-      <div class="card-body mx-2">
+  </div>
+  <div class="col">
+    <div class="card h-100 border-gradient-three">
+      <div class="card-body">
         <h5 class="card-title">Quick Response Codes 🔗</h5>
         <p class="card-text">To embed the pet's personal information for identification on the QR Code.</p>
       </div>
