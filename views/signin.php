@@ -5,10 +5,10 @@
     <div class="container">
       <div class="card login-card">
         <div class="row no-gutters">
-          <div class="col-md-5">
+          <div class="col-sm-7">
             <img src="assets/img/pet-photo.jpg" alt="login" class="login-card-img"> 
           </div>
-          <div class="col-md-7">
+          <div class="col-md-4">
             <div class="card-body">
               <div class="brand-wrapper">
                 <img src="assets/img/strap-logo.png" alt="logo" class="logo"> STRAP    
