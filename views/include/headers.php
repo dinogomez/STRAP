@@ -17,6 +17,7 @@
     
     <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
     <link rel="stylesheet" href="assets/css/landing.css">
+    <link rel="stylesheet" href="assets/css/user-profile.css">
     <title>STRAP</title>
 </head>
 <body>
