@@ -1,6 +1,5 @@
 <?php
                 require_once 'db/connection.php';
-                require_once getcwd().'\views\include\headers.php';
                 session_start();
                 // REGISTRATION VARs
                 $username   =  $_POST['username'];
@@ -18,44 +17,44 @@
                     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
                     $count = mysqli_num_rows($result);
                     
-                    if ($count > 0) {
-                      $_SESSION['register_duplicate'] = true;
-                      $_SESSION['register_username'] = $username;
-                      header('Location: /register');
-                      die();
-                    } 
+                    // if ($count > 0) {
+                    //   $_SESSION['register_duplicate'] = true;
+                    //   $_SESSION['register_username'] = $username;
+                    //   header('Location: /register');
+                    //   die();
+                    // } 
                     
-                    // Name checker, so only letters and space are accepted.
-                    if (!preg_match("/^[a-zA-Z ]+$/",$username)) {
-                      // $username_error = "Name must contain only alphabets and space";
-                      $_SESSION['register_username'] = true;
-                      header('Location: /register');
-                      die();
-                    }
+                    // // Name checker, so only letters and space are accepted.
+                    // if (!preg_match("/^[a-zA-Z ]+$/",$username)) {
+                    //   // $username_error = "Name must contain only alphabets and space";
+                    //   $_SESSION['register_username'] = true;
+                    //   header('Location: /register');
+                    //   die();
+                    // }
 
-                    // Email validation.
-                    if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
-                      // $email_error = "Please Enter Valid Email ID";
-                      $_SESSION['register_email'] = true;
-                      header('Location: /register');
-                      die();
-                    }
+                    // // Email validation.
+                    // if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
+                    //   // $email_error = "Please Enter Valid Email ID";
+                    //   $_SESSION['register_email'] = true;
+                    //   header('Location: /register');
+                    //   die();
+                    // }
 
-                    // Password length validation.
-                    if(strlen($password) < 8) {
-                      // $password_error = "Password must be minimum of 8 characters";
-                      $_SESSION['register_minimum'] = true;
-                      header('Location: /register');
-                      die();
-                    }  
+                    // // Password length validation.
+                    // if(strlen($password) < 8) {
+                    //   // $password_error = "Password must be minimum of 8 characters";
+                    //   $_SESSION['register_minimum'] = true;
+                    //   header('Location: /register');
+                    //   die();
+                    // }  
 
-                    // Password and confirm password validation.
-                    if ($password != $cpassword){
-                      // $cpassword_error = "Password and Confirm Password doesn't match";
-                      $_SESSION['register_confirm'] = true;
-                      header('Location: /register');
-                      die();
-                    } 
+                    // // Password and confirm password validation.
+                    // if ($password != $cpassword){
+                    //   // $cpassword_error = "Password and Confirm Password doesn't match";
+                    //   $_SESSION['register_confirm'] = true;
+                    //   header('Location: /register');
+                    //   die();
+                    // } 
 
                 }
 
@@ -81,7 +80,12 @@
                     $stmt->execute();
 
                     $stmt->close();
-                    header('Location: /login');
+                    
+                    $_SESSION['isLoggedIn'] = true;
+                    $_SESSION['username'] = $username;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['address'] = $address;
+                    header('Location: /dashboard');
   
                   } catch (Exception $e) {
                     echo $e->getMessage();
