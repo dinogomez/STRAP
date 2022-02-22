@@ -1,15 +1,7 @@
 <?php require_once 'include/headers.php'?>
+<?php require_once 'server/db/connection.php'?>
 
-
-    
-        
-<?php
-   session_destroy();
-?>
-
-
-<section class="jumbotron bg-image">
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0);"></div>
+<section >
         <nav class="navbar navbar-expand-xl navbar-light">
             <div class="navbar-container container-fluid">
               <a class="navbar-brand" href="#">
@@ -34,74 +26,96 @@
                 </ul>
                  
               </div>
-              <form class="d-flex">
-                    <button class="nav-button btn btn-light me-2" type="button"><a class="login-button" href="/login">Log In</a></button>
-                    <button class="btn btn-sm btn-primary" type="button">Sign Up</button>
-                </form>
+              <div class="username-container">
+                   <span>Welcome, </span>
+                   <span><?php echo $_SESSION['username'];?></span>
+                 </div>
+                 <div class="profile-pic">
+                     <div>
+                       <a href=""><img src="../assets/img/strap logo.png" alt="user profile pic"></a>
+                     </div>
+                     
+                 </div>
+                 <form action="/process-logout.php" method="post">
+                  <button class="btn btn-sm btn-warning" type="submit">Sign Out</button>
+                 </form>
             </div>
           </nav>
 
-        <div class="mt-4 p-5 rounded jumbotron-container">
-            <p class="what-we-do">What We Do</p>
-            <h1 class="jumbotron-header">A Platform Build For Pets</h1>
-        </div>
-    </section>
 
 
-    <section class=" row about-us-section">
-        <div class="col mt-4 p-5 rounded jumbotron-container aboutus-container">
-            <p class="aboutus">About Us</p>
-            <h1 class="aboutus-header">Specialized TRAcker for Pets (STRAP)</h1>
-            <p class="aboutus-desc"> It aims to provide real-time data location to the pets of the owner by using a Global Positioning System (GPS) collars.</p>
-     
-            <p class="aboutus-desc">Also, it is a platform for pet owners to store their pet’s identification information.</p>
-            <br>
-            
-            <button class="about-button btn btn-sm btn-outline-light" type="button">Learn More</button>
-        </div>
-        <div class="col">
-            <img class="about-us-img"  src="../assets/img/yellow-lab.png" alt="">
-        </div>
-    </section>
+       <section class="main-section">
+           
+         <div class="form-container">
+           
+             <h2 class="forms-header"><img class="gear-icon" src="../assets/img/settings-icon.png" alt="">Profile Management</h2>
+             <div class="profile-container">
+               <a  href=""><img class="profile-pic" src="../assets/img/strap logo.png" alt="user profile pic"></a>
+             </div>
+             <br>
+             
+             <form action="/process-user-profile.php" method="POST" enctype="multipart/form-data">
 
-    <section class="features-section">
-        <h1 class="feature-header">STRAP'S OBJECTIVES</h1>
-        <div class="box-container">
-            <div class="box">
-                <img class="figure" src="../assets/icons/gps-img.png" alt="">
-                <h5 class="box-header">GPS Collar</h5>
-                <p>To build a GPS collar using Arduino for real-time data location of the pets.
-                </p>
-            </div>
-            <div class="box">
-                <img class="figure"  src="../assets/icons/web-img.png" alt="">
-                <h5 class="box-header">Web Application</h5>
-                <p>To create a web application that stores the pet’s identification information. </p>
-            </div>
-            <div class="box">
-                <img class="figure" src="../assets/icons/qr-img.png" alt="">
-                <h5 class="box-header">Quick Response Code</h5>
-                <p>To allow users to access the pet’s personal information using a Quick Response (QR) code from the specialized collar.
-                </p>
-            </div>
-        </div>
-        <div class="button-feature">
-            <button class="btn btn-sm btn-outline-light" type="button">Learn More</button>
+                <?php 
+
+                    $currentUser = $_SESSION['username'];
+                    $sql = "SELECT * FROM users WHERE username = '$currentUser'";
+                    $result = mysqli_query($conn,$sql); 
+                    $count = mysqli_num_rows($result);
+
+                    if ($result) {
+                      if($count > 0) {
+                        while ($row = mysqli_fetch_array($result)){
+                          // Getting the session values
+                          // print_r($row);
+
+                          ?>
+                            <div class="row mb-3">
+                              <label for="username" class="col-sm-2 col-form-label">User Image</label>
+                              <div class="col-sm-10">
+                                <input type="file" id="userImage" name="userImage"><br><br>
+                              </div>
+                            </div>
+
+                            <div class="row mb-3">
+                              <label for="username" class="col-sm-2 col-form-label">Username</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="updateUsername" name="updateUsername" value="<?php echo $row['username']; ?>" />
+                              </div>
+                            </div>
+
+                            <div class="row mb-3">
+                              <label for="inputEmail3" class="col-sm-2 col-form-label">Address</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="updateAddress" name="updateAddress" value="<?php echo $row['address']; ?>" />
+                              </div>
+                            </div>
+
+                            <div class="row mb-3">
+                              <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                              <div class="col-sm-10">
+                                <input type="password" class="form-control" id="updatePassword" name="updatePassword" />
+                              </div>
+                            </div>
+                            <div class="text-center">
+                              <button type="submit" name="update" class="btn btn-primary">Save Changes</button>
+                            </div>
+                          <?php
+                        }
+                      }
+                    }
+                ?>
+
+            </form>
+         </div>
         
-    </section>
-
-
-
-
-
-
+       </section>
 
     <!-- Footer -->
 <footer class="footer-section text-center text-lg-start bg-light text-muted">
     <!-- Section: Social media -->
     <section
-      class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-    >
+      class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
   
       <!-- Left -->
   

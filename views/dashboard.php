@@ -3,15 +3,22 @@
 
 ?>
 
-<div class="container">
-  <h1 class="fs-5 fs-bold">Currently in the Dashboard <span class="text-info">[DEV/PreRelase]</span></h1>
-
-  <div class="my-4">
+<div align="center">
   <?php 
-  echo "<h1 class='display-4'>Hi, ". $_SESSION['username']."</h1>";
+    if(!isset($_SESSION['username'])){
+      ?>
+        <h3> Log in to access data.</h3>
+        <?php 
+    }else {
+        ?>
+        <h3> Welcome <?php echo $_SESSION['username']; ?> </h3>
+        <?php
+    }      
   ?>
-  </div>
 </div>
+
+<div class="text-center">Go to User Profile <a href="/user-profile">User Profile</a></div>
+<form action="/process-logout.php" novalidate="" method="POST">
 
 
 <?php require_once 'include/footers.php'?>
