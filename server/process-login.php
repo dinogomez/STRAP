@@ -39,7 +39,7 @@
         $_SESSION['username'] = $username;
         header('Location: /dashboard');
       } else {
-          throw new Exception("Incorrect Credentials!.");
+          throw new Exception("Incorrect Credentials!. Debug".$password);
         }
       } catch(Exception $e) {
         $_SESSION['login_error'] = $e->getMessage();

@@ -6,24 +6,26 @@
     $newAddress = $_POST['updateAddress'];
     $newPassword = $_POST['updatePassword'];
     $image = $_FILES['userImage'];
-
+    $sql = "";
     if(!empty($newUsername)){
       // For User Information Update
       $loggedInUser = $_SESSION['username']; 
+      if(!empty($newPassword)){
       $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
       $sql = "UPDATE users SET username = '$newUsername', 
                                 address = '$newAddress',
                                 password = '$hashedPassword' where username = '$loggedInUser'";
-      
+      }else{
+        $sql = "UPDATE users SET username = '$newUsername', 
+                                address = '$newAddress' where username = '$loggedInUser'";
+      }
       $results = mysqli_query($conn, $sql);
 
       unset($_SESSION['username']);
       unset($_SESSION['address']);
-      unset($_SESSION['password']);
 
       $_SESSION['username'] = $newUsername;
       $_SESSION['address'] = $newAddress;
-      $_SESSION['password'] = $hashedPassword;
 
       // For Image Insertion into Database
       $imageName = $image['name'];
