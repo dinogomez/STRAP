@@ -1,12 +1,7 @@
 <?php require_once 'include/headers.php'?>
 
 
-            <a href="/login">login</a>
-            <a href="/register">register</a>
-            <a href="/dashboard">dashboard</a>
-            <a href="/sample">sample</a>
-            <a href="/signup">signup</a>
-            <a href="/signin"> signin</a>
+    
         
 <?php
    session_destroy();
@@ -37,12 +32,12 @@
                     <a class="nav-item-link nav-link" href="#">Contact Us</a>
                   </li>
                 </ul>
-    
-                <form class="d-flex">
-                    <button class="btn btn-light me-2" type="button"><a class="login-button" href="/login">Log In</a></button>
+                 
+              </div>
+              <form class="d-flex">
+                    <button class="nav-button btn btn-light me-2" type="button"><a class="login-button" href="/login">Log In</a></button>
                     <button class="btn btn-sm btn-primary" type="button">Sign Up</button>
                 </form>
-              </div>
             </div>
           </nav>
 
