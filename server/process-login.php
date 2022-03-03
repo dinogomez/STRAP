@@ -13,7 +13,7 @@
       }
 
       if (!$username || !$password) {
-        throw new Exception('Incomplete credentials');
+        throw new Exception('[16] Incomplete credentials');
       }
   
       $sql = "SELECT * FROM users WHERE username ='$username'";
@@ -39,7 +39,7 @@
         $_SESSION['username'] = $username;
         header('Location: /dashboard');
       } else {
-          throw new Exception("Incorrect Credentials!.");
+          throw new Exception($username."[42] Incorrect Credentials!.");
         }
       } catch(Exception $e) {
         $_SESSION['login_error'] = $e->getMessage();
