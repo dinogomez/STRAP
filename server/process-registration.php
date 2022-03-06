@@ -12,21 +12,24 @@
           
                 if(isset($username)){
 
-                    //cookieclean
-                    unset($_SESSION['register_duplicate']);
-                    unset($_SESSION['register_username']);
-                    unset($_SESSION['register_email']);
-                    unset($_SESSION['register_minimum']);
-                    unset($_SESSION['register_confirm']);
-
+                  
                     $sql = "SELECT * FROM users WHERE username ='$username'";
                     $result = mysqli_query($conn,$sql);
                     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
                     $count = mysqli_num_rows($result);
                     
                     if ($count > 0) {
-                      $_SESSION['register_duplicate'] = true;
+                      // Deprecated as of strap 1.1
+                      // $_SESSION['register_duplicate'] = true;
+                      // $_SESSION['errorRegister'] = true;
+
                       // $_SESSION['register_username'] = $username;
+
+                      setcookie("errorRegister", 
+                      "Duplicate Username '<strong>".$username."</strong>', Try Again.", 
+                      time() + (5), 
+                      "/");      
+
                       header('Location: /');
                       die();
                     } 
@@ -34,7 +37,14 @@
                     // Name checker, so only letters and space are accepted.
                     if (preg_match('[@_!#$%^&*()<>?/|}{~:]',$username)) {
                       // $username_error = "Name must contain only alphabets and space";
-                      $_SESSION['register_username'] = true;
+                      // $_SESSION['register_username'] = true;
+                      // $_SESSION['errorRegister'] = true;
+
+                      setcookie("errorRegister", 
+                      "Name must contain only alphabets and space. Try Again.", 
+                      time() + (5), 
+                      "/");     
+                      
                       header('Location: /');
                       die();
                     }
@@ -42,7 +52,11 @@
                     // Email validation.
                     if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
                       // $email_error = "Please Enter Valid Email ID";
-                      $_SESSION['register_email'] = true;
+                      setcookie("errorRegister", 
+                      "Please Enter Valid Email ID. Try Again.", 
+                      time() + (5), 
+                      "/"); 
+
                       header('Location: /');
                       die();
                     }
@@ -50,7 +64,11 @@
                     // Password length validation.
                     if(strlen($password) < 8) {
                       // $password_error = "Password must be minimum of 8 characters";
-                      $_SESSION['register_minimum'] = true;
+                      setcookie("errorRegister", 
+                      "Password must be minimum of 8 characters. Try Again.", 
+                      time() + (5), 
+                      "/"); 
+
                       header('Location: /');
                       die();
                     }  
@@ -58,7 +76,11 @@
                     // Password and confirm password validation.
                     if ($password != $cpassword){
                       // $cpassword_error = "Password and Confirm Password doesn't match";
-                      $_SESSION['register_confirm'] = true;
+                      setcookie("errorRegister", 
+                      "Password does not match. Try Again.", 
+                      time() + (5), 
+                      "/");
+
                       header('Location: /');
                       die();
                     } 

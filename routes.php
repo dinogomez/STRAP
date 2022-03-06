@@ -23,9 +23,12 @@ post('/process-login.php','server/process-login.php');
 post('/process-registration.php', 'server/process-registration.php');
 post('/process-user-profile.php' , 'server/process-user-profile.php');
 post('/process-logout.php' , 'server/process-logout.php');
-
+get('/logm','s.php');
 // AUTHROUTES
 get('/dashboard', 'views/dashboard.php');
+get('/logfile', 'logfile.txt');
+post('/qr','views/qr.php');
+get('/qr','views/qr.php');
 
 // ANY
 // any('/404','views/404.php');

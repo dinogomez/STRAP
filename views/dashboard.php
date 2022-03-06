@@ -3,6 +3,16 @@
 
 ?>
 
+<div class="container">
+
+
+
+
+
+
+
+</div>
+
 <div align="center">
   <?php 
     if(!isset($_SESSION['username'])){
@@ -16,6 +26,9 @@
     }      
   ?>
 </div>
+
+
+
 
 <div class="text-center">Go to User Profile <a href="/user-profile">User Profile</a></div>
 <form action="/process-logout.php" novalidate="" method="POST">

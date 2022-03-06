@@ -24,5 +24,6 @@
     <link rel="stylesheet" href="assets/css/user-profile.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <title>STRAP</title>
+
 </head>
 <body>
