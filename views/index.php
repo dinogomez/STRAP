@@ -6,13 +6,15 @@
     session_start(); 
     
   } 
-  if(isset($_SESSION['login_error']) && $_SESSION['login_error']){
-      echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
-                         '<strong>".$_SESSION['login_error']."</strong>', Try Again.
-                        </div>  <div class='text-center'>
-                      </div>";
-  }
-?>
+  ?>
+
+
+
+
+
+
+<!-- && $_SESSION['errorRegister'] = true) -->
+
 
 <div class="alert alert-dismissible alert-info text-center">
   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -21,6 +23,7 @@
 
 
 <div class="container">
+
 
 <div class="mx-5 px-5">
   <!-- NAVBAR -->
@@ -81,6 +84,16 @@
 
           </div>
           <hr>
+          <?php 
+          
+            if(isset($_COOKIE['loginError']) && $_COOKIE['loginError']){
+                echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                                   '<strong>".$_COOKIE['loginError']."</strong>', Try Again.
+                                  </div>  <div class='text-center'>
+                                </div>";
+              }
+          ?>
+          
         <form action="/process-login.php" method="post">
         <div class="my-3">
         <label for="formControlInput" class="form-label">Username</label>
@@ -124,6 +137,25 @@
 
           </div>
           <hr>
+          
+
+         
+         
+
+          <?php 
+
+
+
+          
+            if (isset($_COOKIE['errorRegister'])) {
+              echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                      ".$_COOKIE['errorRegister']."
+                    </div>  
+                    <div class='text-center'></div>";
+            }
+          
+          
+          ?>
         <form action="/process-registration.php" method="post">
             
         <div class="my-3">
@@ -395,4 +427,4 @@
 </div>
 
    
-<?php require_once 'include/footers.php'?>
+<?php require_once 'include/footers-index.php'?>
