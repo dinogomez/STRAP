@@ -1,37 +1,29 @@
-<?php require_once 'include/headers.php';
+<?php require_once 'server/process-protect-page.php'?>
 
 
-?>
+<?php require_once 'include/headers.php';?>
 
 <div class="container">
 
 
+<div class="mx-5 px-5">
+
+<?php include_once 'include/nav-dash.php';?>
+<?php 
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+
+?>
 
 
-
-
-
-</div>
-
-<div align="center">
-  <?php 
-    if(!isset($_SESSION['username'])){
-      ?>
-        <h3> Log in to access data.</h3>
-        <?php 
-    }else {
-        ?>
-        <h3> Welcome <?php echo $_SESSION['username']; ?> </h3>
-        <?php
-    }      
-  ?>
+  <!-- Footer -->
+<!-- NAV -->
+<!-- MAIN CONTAINER -->
 </div>
 
 
-
-
-<div class="text-center">Go to User Profile <a href="/user-profile">User Profile</a></div>
-<form action="/process-logout.php" novalidate="" method="POST">
+</div>
 
 
 <?php require_once 'include/footers.php'?>

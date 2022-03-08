@@ -1,10 +1,7 @@
 <?php
-    ob_start();
-    unset($_SESSION['id']);
-    unset($_SESSION['username']);
-    unset($_SESSION['email']);
-    unset($_SESSION['address']);
-    unset($_SESSION['user_image']);
+if(session_id() == ''){
+    session_start();
+ }     $_SESSION = array();
     session_destroy();
     header("Location: /");
 ?>

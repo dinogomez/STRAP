@@ -33,10 +33,41 @@
       while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         //setting values
         $hash = $row['password'];
+        $_SESSION['id'] = $row['id'];
       }
 
       if (password_verify($password,$hash)) {
+        $_SESSION['isLoggedIn'] = true;
         $_SESSION['username'] = $username;
+
+        $userID = $_SESSION['id'];
+
+    $sql = "SELECT * FROM pets WHERE userID ='$userID'";
+    $result = mysqli_query( $conn,$sql);
+    $count = mysqli_num_rows($result);
+
+
+    if ($count<= 0) {
+      $_SESSION['noPets'] = true;
+      if(isset($_SESSION['pets'])){
+        unset($_SESSION['pets']);
+
+      }
+    } else {
+      $_SESSION['pets'] = array();
+      
+      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        //setting values      
+        $pet = array($row['id'], $row['petName'], $row['petType'], $row['petBreed'], $row['petDiet'], $row['petVaccine'], $row['ContactName'], $row['ContactNumber'],$row['petImg'], $row['uniqid']);
+       
+        array_push($_SESSION['pets'],$pet);
+       
+      }
+
+    }
+    
+       
+
         header('Location: /dashboard');
       } else {
           throw new Exception("Incorrect Credentials!");

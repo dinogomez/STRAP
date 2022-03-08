@@ -2,8 +2,22 @@
 
 session_start();
 
+$protected = array("/dashboard", "/user-profile", "/pet", "/pet-add");
+
 function get($route, $path_to_include){
+  // GLOBAL $protected;
+  // $result = in_array($route,$protected);
+  // if($result){
+  //   if(isset($_SESSION['isLoggedIn'])){
+  //     if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
+  //   }else {
+  //     header('Location: /');
+  //   } 
+  // } else {
+  //   if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
+  // }  
   if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
+
 }
 function post($route, $path_to_include){
   if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ route($route, $path_to_include); }    

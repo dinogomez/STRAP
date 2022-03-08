@@ -1,12 +1,13 @@
 <?php
                 require_once 'db/connection.php';
-                session_start();
-                // REGISTRATION VARs
-                $username   =  $_POST['username'];
-                $email = $_POST['email'];
-                $address = $_POST['address'];
-                $password   =  $_POST['password'];
-                $cpassword = $_POST['cpassword'];
+                if(session_id() == ''){
+                  session_start();
+               }                 // REGISTRATION VARs
+                $username   = mysqli_real_escape_string($conn,$_POST['username']);
+                $email = mysqli_real_escape_string($conn,$_POST['email']);
+                $address = mysqli_real_escape_string($conn,$_POST['address']);
+                $password   = mysqli_real_escape_string($conn,$_POST['password']);
+                $cpassword = mysqli_real_escape_string($conn,$_POST['cpassword']);
 
                 echo "@@debug: ".$username." ".$password." ".$email." ".$address;
           
@@ -35,7 +36,7 @@
                     } 
                     
                     // Name checker, so only letters and space are accepted.
-                    if (preg_match('[@_!#$%^&*()<>?/|}{~:]',$username)) {
+                    if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $username)) {
                       // $username_error = "Name must contain only alphabets and space";
                       // $_SESSION['register_username'] = true;
                       // $_SESSION['errorRegister'] = true;

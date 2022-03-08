@@ -15,59 +15,19 @@
 
 <!-- && $_SESSION['errorRegister'] = true) -->
 
-
+<!-- 
 <div class="alert alert-dismissible alert-info text-center">
   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
   <strong>Information!</strong> you are running on build <a href="https://github.com/dinogomez/htdocs/tree/DEV/PreRelease_Branch" class="alert-link">DEV/PreRelease</a>.
-</div>
+</div> -->
 
 
 <div class="container">
 
 
 <div class="mx-5 px-5">
-  <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container-fluid fs-5">
-    <!-- <a class="navbar-brand" href="#">STRAP</a> -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Home
-            <span class="visually-hidden">(current)</span>
-          </a>
-        </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li> -->
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Features</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">GPS</a>
-            <a class="dropdown-item" href="#">Pet Collar</a>
-            <a class="dropdown-item" href="#">Pet Interaction</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Research Document</a>
-          </div>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <a class="btn btn-outline-info my-2 my-sm-0 px-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
-      </form>
-    </div>
-  </div>
-</nav>
+ 
+<?php require_once 'include/nav-index.php';?>
 
 <!-- Modal -->
 <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,7 +54,7 @@
               }
           ?>
           
-        <form action="/process-login.php" method="post">
+        <form action="/process-login" method="post">
         <div class="my-3">
         <label for="formControlInput" class="form-label">Username</label>
         <input type="text" name="username"class="form-control" id="usernameLogin">
@@ -105,10 +65,10 @@
         </div>
         <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="formCheckDefault">
-        <label class="form-check-label text-secondary" for="formCheckDefault">Remember Me</label>
+        <label class="form-check-label" for="formCheckDefault">Remember Me</label>
       </div>
         <hr>
-        <button type="submit" class="mt-2 btn btn-md w-100 btn-info shadow">Login</button>
+        <button type="submit" class="mt-2 btn btn-md w-100 btn-primary shadow">Login</button>
         </form>
         <div class="text-center mt-3 ">
           <a href="" class="text-primary nav-link">Forgot Password?</a>
@@ -117,7 +77,7 @@
       </div>
 
       <div class="modal-footer justify-content-center">
-          <span class="text-secondary">Dont have an account? <a class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Create Account</a></span>
+          <span class="">Dont have an account? <a class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Create Account</a></span>
       </div>
     </div>
   </div>
@@ -156,7 +116,7 @@
           
           
           ?>
-        <form action="/process-registration.php" method="post">
+        <form action="/process-registration" method="post">
             
         <div class="my-3">
         <label for="formControlInput" class="form-label">Username</label>
@@ -184,19 +144,20 @@
         </div>
      
         <hr>
-        <button type="submit" class="mt-2 btn btn-md w-100 btn-info shadow">Create</button>
+        <button type="submit" class="mt-2 btn btn-md w-100 btn-primary shadow">Create</button>
         </form>
         </div>
       </div>
 
       <div class="modal-footer justify-content-center">
-          <span class="text-secondary">Already have an account? <a class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign In!</a></span>
+          <span class="">Already have an account? <a class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign In!</a></span>
       </div>
     
     </div>
   </div>
 </div>
 
+ 
 <div class="container col-12">
 <div class="py-5 mt-3">
 <p class="fs-5 fw-normal m-0">👋 Welcome to,</p>
