@@ -1,16 +1,10 @@
 <?php require_once 'include/headers.php'?>
 
-
-    
-        
-<?php
-
-?>
 <?php 
   if(!isset($_SESSION)) 
-  { 
-      session_start(); 
-     
+  {   
+    session_start(); 
+    
   } 
   if(isset($_SESSION['login_error']) && $_SESSION['login_error']){
       echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
@@ -18,7 +12,7 @@
                         </div>  <div class='text-center'>
                       </div>";
   }
-  ?>
+?>
 
 <div class="alert alert-dismissible alert-info text-center">
   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -87,14 +81,14 @@
 
           </div>
           <hr>
-          <form action="/process-login" method="post">
+        <form action="/process-login.php" method="post">
         <div class="my-3">
         <label for="formControlInput" class="form-label">Username</label>
-        <input type="text" name="username"class="form-control" id="formControlInput">
+        <input type="text" name="username"class="form-control" id="usernameLogin">
         </div>
         <div class="my-3">
         <label for="formControlInput" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="formControlInput" autocomplete="off">
+        <input type="password" name="password" class="form-control" id="passwordLogin" autocomplete="off">
         </div>
         <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="formCheckDefault">
@@ -130,35 +124,35 @@
 
           </div>
           <hr>
-          <form action="/process-register" method="post">
+        <form action="/process-registration.php" method="post">
             
         <div class="my-3">
         <label for="formControlInput" class="form-label">Username</label>
-        <input type="text" name="username"class="form-control" id="formControlInput" require>
+        <input type="text" name="username"class="form-control" id="username" require>
         </div>
 
         <div class="my-3">
         <label for="formControlInput" class="form-label">Email</label>
-        <input type="email" name="email"class="form-control" id="formControlInput" require>
+        <input type="email" name="email"class="form-control" id="email" require>
         </div>
 
         <div class="my-3">
         <label for="formControlInput" class="form-label">Address</label>
-        <input type="text" name="address"class="form-control" id="formControlInput" require>
+        <input type="text" name="address"class="form-control" id="address" require>
         </div>
 
         <div class="my-3">
         <label for="formControlInput" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="formControlInput" require>
+        <input type="password" name="password" class="form-control" id="password" require>
         </div>
 
         <div class="my-3">
         <label for="formControlInput" class="form-label">Confirm Password</label>
-        <input type="password" name="cpassword" class="form-control" id="formControlInput" require>
+        <input type="password" name="cpassword" class="form-control" id="cpassword" require>
         </div>
      
         <hr>
-        <button type="submit" class="mt-2 btn btn-md w-100 btn-info shadow">Login</button>
+        <button type="submit" class="mt-2 btn btn-md w-100 btn-info shadow">Create</button>
         </form>
         </div>
       </div>
@@ -340,7 +334,7 @@
             <!-- Content -->
             
             <h6 class="text-uppercase fw-bold mb-4">
-                <img src="img/strap logo.png" alt="">
+                <img src="assets/img/strap logo.png" alt="">
               <i class="fas fa-gem me-3"></i>STRAP
             </h6>
             <p>

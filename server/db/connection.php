@@ -1,8 +1,8 @@
 <?php 
 
  $server = "localhost";
- $dbuser = "root";
- $dbpass = "";
+ $dbuser = "phpmyadmin";
+ $dbpass = "power123";
  $dbname = "strap";
 
  $conn = mysqli_connect($server, $dbuser, $dbpass, $dbname);

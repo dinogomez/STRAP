@@ -1,7 +1,8 @@
 <?php 
     require_once 'db/connection.php';
+    
     session_start();
-
+    
     $username = mysqli_real_escape_string($conn,$_POST['username']);
     $password = mysqli_real_escape_string($conn,$_POST['password']);
 
@@ -23,15 +24,15 @@
       if ($count<= 0) {
         throw new Exception("Account does not exist.");
       }
-  
+      
       //retrieving name from database for session storage
       $sql = "SELECT * FROM users WHERE username ='$username'";
       $result = mysqli_query($conn,$sql);
+      
   
       while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         //setting values
         $hash = $row['password'];
-        
       }
 
       if (password_verify($password,$hash)) {
