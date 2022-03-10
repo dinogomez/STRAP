@@ -23,10 +23,10 @@
 ?>
 <div class="container-fluid">
   <section>
-    <div class="row">
+    <div class="row mt-4">
       <div class="col-12 mt-3 mb-1">
-        <h5 class="text-uppercase">Minimal Statistics Cards</h5>
-        <p>Statistics on minimal cards.</p>
+        <h5 class="text-uppercase">Statistics</h5>
+        <p>Your account metrics and statistics 📊.</p>
       </div>
     </div>
     <div class="row">

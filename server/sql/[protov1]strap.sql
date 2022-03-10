@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2022 at 02:03 AM
+-- Generation Time: Mar 10, 2022 at 01:40 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -51,8 +51,7 @@ CREATE TABLE `devices` (
 
 INSERT INTO `devices` (`id`, `deviceID`) VALUES
 (1, '6b7b3d916c57729c'),
-(2, '7a6c2e826d68838b'),
-(3, '8c45383955595519');
+(2, '7a6c2e826d68838b');
 
 -- --------------------------------------------------------
 
@@ -127,7 +126,8 @@ CREATE TABLE `pets` (
 --
 
 INSERT INTO `pets` (`id`, `petName`, `petType`, `petBreed`, `petDiet`, `petVaccine`, `ContactName`, `ContactNumber`, `petImg`, `userID`, `uniqid`) VALUES
-(45, 'Smudge', 'Dog', 'Canadian Shorthair', 'Rat', 'Anti Rat', 'Dino Paulo Gomez', '+639151177924', 'assets/pet/download.jpg', 13, '62294df67d510');
+(42, 'Otto', 'Dog', 'Labrador', 'Kibbles', '5 in 1', 'Dino Paulo Reyes Gomez', '+639151177924', 'assets/pet/yellow-lab.png', 13, '62291808d2feb'),
+(43, 'Sammy', 'Dog', 'Pomeranian', 'N/A', 'N/A', 'Dino Paulo Reyes Gomez', '+639151177924', 'assets/pet/download.jpg', 13, '622918729911e');
 
 -- --------------------------------------------------------
 
@@ -147,7 +147,7 @@ CREATE TABLE `trackers` (
 --
 
 INSERT INTO `trackers` (`id`, `deviceID`, `petID`, `userID`) VALUES
-(31, 2, 45, 13);
+(29, 1, 42, 13);
 
 -- --------------------------------------------------------
 
@@ -243,7 +243,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `devices`
 --
 ALTER TABLE `devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `gps`
@@ -255,13 +255,13 @@ ALTER TABLE `gps`
 -- AUTO_INCREMENT for table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `trackers`
 --
 ALTER TABLE `trackers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `users`
