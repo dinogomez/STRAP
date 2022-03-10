@@ -32,7 +32,7 @@
         </li>
        
       </ul>
-      <form class="d-flex">
+      <div class="d-flex">
       <form class="d-flex" action="/search" method="GET" method="GET">
           <div class="input-group me-2">
         <input type="text" class="form-control" name="id"  placeholder="Pet Unique Id" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -49,7 +49,7 @@
             <a class="dropdown-item" href="/logout">Logout</a>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </nav>  

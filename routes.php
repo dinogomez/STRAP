@@ -27,7 +27,12 @@ get('/search', 'views/search.php');
 
 get('/favicon', 'assets/img/strapfavicon.png');
 
-get('/gps','server/gps/gps-app.php');
+get('/gps','server/process-gps.php');
+get('/gps-retrieve','server/process-gps-retrieve.php');
+
+get('/test','test/index.php');
+get('/testdata','test/data.txt');
+
 
 // POST
 post('/process-login','server/process-login.php');
@@ -37,6 +42,10 @@ post('/process-user-profile.php' , 'server/process-user-profile.php');
 post('/pet-register','server/process-pet-registration.php');
 post('/pet-update','server/process-pet-update.php');
 post('/pet-delete','server/process-pet-delete.php');
+
+post('/tracker-delete','server/process-tracker-delete.php');
+post('/tracker-update','server/process-tracker-update.php');
+
 post('/process-tracker-registration', 'server/process-tracker-registration.php');
 get('/logout' , 'server/process-logout.php');
 get('/logm','s.php');
@@ -46,7 +55,7 @@ get('/dashboard', 'views/dashboard.php');
 get('/logfile', 'logfile.txt');
 post('/qr','views/qr.php');
 get('/qr','views/qr.php');
-
+get('/dogmarker', 'assets/img/dog-marker.png');
 // ANY
 // any('/404','views/404.php');
 

@@ -7,29 +7,33 @@
     $userId = (int) $_SESSION['id'];
     $deviceID =  mysqli_real_escape_string($conn,$_POST['deviceID']);
     $petID = (int) mysqli_real_escape_string($conn,$_POST['petID']);
+    
 
     try {
     
     
-    $sql = "SELECT * FROM trackers WHERE petID ='$petID'";
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $count = mysqli_num_rows($result);
+      $sql = "SELECT * FROM trackers WHERE petID ='$petID'";
+      $result = mysqli_query($conn,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $count = mysqli_num_rows($result);
+  
+      if ($count > 0) {
+        throw new Exception("<strong>Pet</strong> already has a tracker!");
+      }
 
-    if ($count > 0) {
-      throw new Exception("<strong>Pet</strong> already has a tracker!");
-    }
 
-    $sql = "SELECT devices.deviceID FROM trackers LEFT JOIN devices ON trackers.deviceID = devices.id";
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $count = mysqli_num_rows($result);
+      
+      $sql = "SELECT devices.deviceID FROM trackers LEFT JOIN devices ON trackers.deviceID = devices.id";
+      $result = mysqli_query($conn,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $count = mysqli_num_rows($result);
+  
+      
+      if ($row['deviceID'] == $deviceID) {
+        throw new Exception("<strong>Tracker</strong> is already tracking a pet!");
+      }
 
-    
-    if ($row['deviceID'] == $deviceID) {
-      throw new Exception("<strong>Tracker</strong> is already tracking a pet!");
-    }
-
+   
 
     
    

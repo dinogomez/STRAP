@@ -77,7 +77,19 @@ include 'server/process-tracker-retrieve.php';
 
 
 
+<?php 
+            if(isset($_COOKIE['trackerUpdateError'])){
+              echo "<div class='alert alert-danger text-center mb-3' role='alert'>
+              <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg>
+      
+                                 ".$_COOKIE['trackerUpdateError'].", Try Again.
+                                </div>  <div class='text-center'>
+                              </div>";
+            }
 
+
+
+?>
 
 
 <table class="table table-primary table-striped">

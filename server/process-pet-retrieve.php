@@ -26,11 +26,23 @@
         array_push($_SESSION['pets'],$pet);
        
       }
+      
 
 
       foreach($_SESSION['pets'] as $pet){
 
-        $data = "http://".$_SERVER['SERVER_NAME']."/search?id=".$pet[9];
+        $trackerActive = false;
+
+        if(isset($_SESSION['trackers'])){
+          foreach($_SESSION['trackers'] as $tracker){
+            if($tracker[2] == $pet[1]){
+              $trackerActive = true;
+              break;
+            }
+          }
+        }
+
+        $data = "http://".$_SERVER['SERVER_NAME']."/search?id=".$pet[9]." Contact Name: ".$pet[6].", Contact Number: ".$pet[7];
         echo " <div class='d-flex my-2 shadow-lg border'>
         <div class='flex-shrink-0'>
             <img src='".$pet[8]."' alt='pet image' style='width: 300px; height: 300px;'>
@@ -41,9 +53,15 @@
             <h5>".$pet[1]." <span class='badge bg-success rounded-pill fs-bold'>".$pet[9]."</span><span class='ms-2 badge bg-primary rounded-pill'>".$pet[2]."</span><span class='ms-2 badge bg-warning rounded-pill'>".$pet[3]."</span></h5>
 
             </div>
-            <div class='mx-4'>
-            <h6><span class='text-success'>⬤</span> Tracker Active</h6>
-             </div>
+            <div class='mx-4'>";
+
+            if($trackerActive){
+              echo "<h6><span class='text-success'>⬤</span> Tracker Active</h6>";
+            } else {
+              echo "<h6><span class='text-danger'>⬤</span> No Tracker</h6>";
+            }
+            
+            echo "</div>
             
             </div>
             <h6 class='text-muted'>".$pet[6]." | ".$pet[7]."</h6>
