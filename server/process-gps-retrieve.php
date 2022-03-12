@@ -1,6 +1,8 @@
 <?php
 require_once 'db/connection.php';
-
+if(session_id() == ''){
+   session_start();
+}
  $did = mysqli_real_escape_string($conn,$_GET['did']);
 
  $sql = "SELECT * FROM gps WHERE deviceID='$did' ORDER BY id DESC limit 1";

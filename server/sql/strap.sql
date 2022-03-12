@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2022 at 02:03 AM
+-- Generation Time: Mar 12, 2022 at 11:37 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -33,6 +33,13 @@ CREATE TABLE `admin` (
   `password` varchar(100) NOT NULL,
   `role` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `role`) VALUES
+(1, 'super', '$2y$10$EyGELBxv3TXvf5lccp1uM.UUMi.xl.NRMfJSwvWXvKJIlY4ECQPh6', 'super');
 
 -- --------------------------------------------------------
 
@@ -73,34 +80,67 @@ CREATE TABLE `gps` (
 --
 
 INSERT INTO `gps` (`id`, `deviceID`, `lat`, `lon`, `pingTime`) VALUES
-(1, 1, 14.5001, 121.001, '2022-02-24T06:57:45'),
-(2, 1, 14, 121, '2022-02-24T06:57:45'),
-(3, 1, 14.22, 121.22, '2022-02-24T06:57:45'),
-(4, 1, 14.22, 121.22, '2022-02-24T06:57:45'),
-(5, 1, 14.22, 121.22, '2022-02-24T06:57:45'),
-(6, 1, 14, 121, '2022-02-24T06:57:45'),
-(7, 1, 14, 121.0012, '2022-02-24T06:57:45'),
-(8, 1, 14.2001, 121.0012, '2022-02-24T06:57:45'),
-(9, 1, 14.200122, 121.0012444, '2022-02-24T06:57:45'),
-(12, 1, 14.1252, 121.1252, '2022-02-24T06:57:45'),
-(13, 1, 14.1252001, 121.1252001, '2022-02-24T06:57:45'),
-(14, 1, 14.01, 14.01, '2022-02-24T06:57:45'),
-(15, 1, 14.01, 120.01, '2022-02-24T06:57:45'),
-(16, 1, 14.01, 120.05, '2022-02-24T06:57:45'),
-(17, 1, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
-(18, 1, 14.578338607, 120.9806941638, '2022-02-24T06:57:45'),
-(19, 1, 14.57, 120.9806941638, '2022-02-24T06:57:45'),
-(20, 1, 14.578338607, 120.9806941638, '2022-02-24T06:57:45'),
+(1, 1, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
+(2, 1, 14.578338607, 120.9806941638, '2022-02-24T06:57:45'),
+(3, 1, 14.578338607, 120.9806941638, '2022-02-24T06:57:45'),
+(4, 1, 14.578338607, 120.9806941638, '2022-02-24T06:57:45'),
+(5, 1, 14.5001, 121.001, '2022-02-24T06:57:45'),
+(6, 1, 14.5001, 121.001, '2022-02-24T06:57:45'),
+(7, 2, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
+(8, 2, 12, 12, '2022-02-24T06:57:45'),
+(9, 1, 14, 121, '2022-02-24T06:57:45'),
+(10, 1, 14, 121, '2022-02-24T06:57:45'),
+(11, 1, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
+(12, 2, 12, 12, '2022-02-24T06:57:45'),
+(13, 2, 12, 12, '2022-02-24T06:57:45'),
+(14, 2, 12.5, 12.4, '2022-02-24T06:57:45'),
+(15, 1, 14.57837, 120.9806941638, '2022-02-24T06:57:45'),
+(16, 1, 1557837, 120.9806941638, '2022-02-24T06:57:45'),
+(17, 1, 15.57837, 120.9806941638, '2022-02-24T06:57:45'),
+(18, 1, 14.57837, 120.9806941638, '2022-02-24T06:57:45'),
+(19, 1, 14.57222227, 120.9806941638, '2022-02-24T06:57:45'),
+(20, 1, 15.57222227, 120.9806941638, '2022-02-24T06:57:45'),
 (21, 1, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
-(22, 1, 14.01, 120.05, '2022-02-24T06:57:45'),
-(23, 1, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
-(24, 1, 14.578338607, 120.9806941638, '2022-02-24T06:57:45'),
-(25, 1, 14.57, 120.9806941638, '2022-02-24T06:57:45'),
-(26, 1, 14.578338607, 120.9806941638, '2022-02-24T06:57:45'),
-(27, 1, 14.57, 120.9806941638, '2022-02-24T06:57:45'),
-(28, 1, 14.578338607, 120.9806941638, '2022-02-24T06:57:45'),
+(22, 1, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
+(23, 1, 14.578368807, 120.98069508416, '2022-02-24T06:57:45'),
+(24, 1, 14.57832223307, 120.98069508416, '2022-02-24T06:57:45'),
+(25, 1, 14.5783, 120.98069508416, '2022-02-24T06:57:45'),
+(26, 1, 15, 120.98069508416, '2022-02-24T06:57:45'),
+(27, 1, 15, 120.98069508416, '2022-02-24T06:57:45'),
+(28, 1, 15, 120.98069508416, '2022-02-24T06:57:45'),
 (29, 1, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
-(30, 1, 14.01, 120.05, '2022-02-24T06:57:45');
+(30, 1, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
+(31, 1, 14.578807, 120.98069508416, '2022-02-24T06:57:45'),
+(32, 1, 14.57822222807, 120.98069508416, '2022-02-24T06:57:45'),
+(33, 1, 14.8, 120.98069508416, '2022-02-24T06:57:45'),
+(34, 1, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
+(35, 1, 14.822, 120.98069508416, '2022-02-24T06:57:45'),
+(36, 1, 14.833, 120.98069508416, '2022-02-24T06:57:45'),
+(37, 1, 14.855, 120.98069508416, '2022-02-24T06:57:45'),
+(38, 1, 14.852225, 120.98069508416, '2022-02-24T06:57:45'),
+(39, 1, 14.523478338609, 120.98069508416, '2022-02-24T06:57:45'),
+(40, 1, 1557, 120.98069508416, '2022-02-24T06:57:45'),
+(41, 1, 15.57, 120.98069508416, '2022-02-24T06:57:45'),
+(42, 1, 15.532317, 120.98069508416, '2022-02-24T06:57:45'),
+(43, 1, 15.3333317, 120.98069508416, '2022-02-24T06:57:45'),
+(44, 1, 15.3235333317, 120.98069508416, '2022-02-24T06:57:45'),
+(45, 1, 15.3333317, 120.98069508416, '2022-02-24T06:57:45'),
+(46, 1, 15.532317, 120.98069508416, '2022-02-24T06:57:45'),
+(47, 1, 15.3333317, 120.98069508416, '2022-02-24T06:57:45'),
+(48, 1, 15.3235333317, 120.98069508416, '2022-02-24T06:57:45'),
+(49, 2, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
+(50, 2, 14.578338608969, 120.80841638, '2022-02-24T06:57:45'),
+(51, 2, 14.57228338609, 120.80841638, '2022-02-24T06:57:45'),
+(52, 1, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45'),
+(53, 2, 14.578338607, 120.9806941638, '2022-02-24T06:57:45'),
+(54, 2, 14.57228607, 120.9806941638, '2022-02-24T06:57:45'),
+(55, 2, 14.57228607, 120.9806941638, '2022-02-24T06:57:45'),
+(56, 2, 14.57207, 120.9806941638, '2022-02-24T06:57:45'),
+(57, 2, 14.57202222227, 120.9806941638, '2022-02-24T06:57:45'),
+(58, 2, 14.777202222227, 120.9806941638, '2022-02-24T06:57:45'),
+(59, 1, 14.578323232361, 120.98069508416, '2022-02-24T06:57:45'),
+(60, 1, 14.323236089688, 120.98069508416, '2022-02-24T06:57:45'),
+(61, 1, 14.33608968807, 120.98069508416, '2022-02-24T06:57:45');
 
 -- --------------------------------------------------------
 
@@ -127,7 +167,36 @@ CREATE TABLE `pets` (
 --
 
 INSERT INTO `pets` (`id`, `petName`, `petType`, `petBreed`, `petDiet`, `petVaccine`, `ContactName`, `ContactNumber`, `petImg`, `userID`, `uniqid`) VALUES
-(45, 'Smudge', 'Dog', 'Canadian Shorthair', 'Rat', 'Anti Rat', 'Dino Paulo Gomez', '+639151177924', 'assets/pet/download.jpg', 13, '62294df67d510');
+(48, 'Sammy', 'Dog', 'Pomeranian', 'Kibbles', 'Add', 'Dino Paulo Gomez', '+639151177924', 'assets/pet/274933331_552720812522257_518137637596335034_n.png', 13, '622b351c0134d'),
+(49, 'Enardo', 'Dog', 'Grub', 'A', 'A', 'A', 'A', 'assets/pet/274933331_552720812522257_518137637596335034_n.png', 19, '622b382672db1'),
+(50, 'Enardo', 'Cat', 'A', 'A', 'A', 'Dino Paulo Reyes Gomez', '+639151177924', 'assets/pet/rust.jpg', 13, '622c6868e9c80'),
+(51, '09151177924', 'Dog', 'Grub', 'A', 'A', 'Dino Paulo Reyes Gomez', '+639151177924', 'assets/pet/274874800_10225621148609204_2478445183771034066_n.jpg', 13, '622ca8bacb5d2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports`
+--
+
+CREATE TABLE `reports` (
+  `id` int(11) NOT NULL,
+  `reports` varchar(100) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `petID` int(11) NOT NULL,
+  `isResolved` tinyint(1) NOT NULL,
+  `resolverID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sqltest`
+--
+
+CREATE TABLE `sqltest` (
+  `id` int(11) NOT NULL,
+  `test` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -147,7 +216,8 @@ CREATE TABLE `trackers` (
 --
 
 INSERT INTO `trackers` (`id`, `deviceID`, `petID`, `userID`) VALUES
-(31, 2, 45, 13);
+(32, 1, 48, 13),
+(33, 2, 50, 13);
 
 -- --------------------------------------------------------
 
@@ -182,7 +252,9 @@ INSERT INTO `users` (`id`, `username`, `email`, `address`, `password`, `user_ima
 (15, 'dinogomez18', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$oCuDQEf7h00dQ2lpV9W9heNmOvvfkg2YPkNomylz4S.mUIXld1OFy', NULL),
 (16, 'dinogomez20', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$TpxXIDbCgwHIT8iztherh.2CpCKVu9AbZAErWWbRADgHaZrGSNCVy', NULL),
 (17, 'dinogomez21', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$1WGFwjgSFWI9LfhQwpWMWOcdQt.ual8h8h6Bih6sMSIKZIWaOGN72', NULL),
-(18, 'owenclamor', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$0I/JVn1n99E1UxGq6VKSMeGjufi4qIJZn5Pmldx/gOE/WLwIu2Yja', NULL);
+(18, 'owenclamor', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$0I/JVn1n99E1UxGq6VKSMeGjufi4qIJZn5Pmldx/gOE/WLwIu2Yja', NULL),
+(19, 'dinogomez16', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$OD.1uMQ1HnOoQqXkQ1bRjuYBwiwPUWe3uoJTARonQrprqXHtbmNgi', NULL),
+(20, 'dinogomez15', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$v.53IB9f1c2.h60apF6.YuVG59y4SOD/H7m3dSSIMMQ8sOtKgqV2O', NULL);
 
 --
 -- Indexes for dumped tables
@@ -215,6 +287,21 @@ ALTER TABLE `pets`
   ADD KEY `userID` (`userID`);
 
 --
+-- Indexes for table `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `petID` (`petID`),
+  ADD KEY `userID` (`userID`),
+  ADD KEY `resolverID` (`resolverID`);
+
+--
+-- Indexes for table `sqltest`
+--
+ALTER TABLE `sqltest`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `trackers`
 --
 ALTER TABLE `trackers`
@@ -237,7 +324,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `devices`
@@ -249,25 +336,37 @@ ALTER TABLE `devices`
 -- AUTO_INCREMENT for table `gps`
 --
 ALTER TABLE `gps`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sqltest`
+--
+ALTER TABLE `sqltest`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `trackers`
 --
 ALTER TABLE `trackers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
@@ -284,6 +383,14 @@ ALTER TABLE `gps`
 --
 ALTER TABLE `pets`
   ADD CONSTRAINT `pets_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `reports`
+--
+ALTER TABLE `reports`
+  ADD CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`petID`) REFERENCES `pets` (`id`),
+  ADD CONSTRAINT `reports_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `reports_ibfk_3` FOREIGN KEY (`resolverID`) REFERENCES `admin` (`id`);
 
 --
 -- Constraints for table `trackers`

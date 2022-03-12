@@ -1,7 +1,9 @@
 <?php 
 
     require_once 'db/connection.php';
-
+    if(session_id() == ''){
+      session_start();
+   }
     $trackerID =  mysqli_real_escape_string($conn,$_POST['trackerID']);
     $id = $_SESSION['id'];
     $petID =  mysqli_real_escape_string($conn,$_POST['petID']);

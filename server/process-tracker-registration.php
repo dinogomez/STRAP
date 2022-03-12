@@ -1,7 +1,9 @@
 <?php 
 
     require_once 'db/connection.php';
-
+    if(session_id() == ''){
+      session_start();
+   }
 
 
     $userId = (int) $_SESSION['id'];

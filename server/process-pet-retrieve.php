@@ -43,7 +43,7 @@
         }
 
         $data = "http://".$_SERVER['SERVER_NAME']."/search?id=".$pet[9]." Contact Name: ".$pet[6].", Contact Number: ".$pet[7];
-        echo " <div class='d-flex my-2 shadow-lg border'>
+        echo " <div class='d-flex my-2 shadow-lg bg-glass border'>
         <div class='flex-shrink-0'>
             <img src='".$pet[8]."' alt='pet image' style='width: 300px; height: 300px;'>
         </div>
@@ -70,7 +70,7 @@
             <h6 class='fs-6 fw-bold'>Vaccines: </h6>
             <p>".$pet[5]."</p>
             <div class='d-flex float-end p-3'>
-              <a href='' class='btn btn-primary mx-1'>Track</a>
+              <a href='/dashboard?trackID=".$pet[0]."' class='btn btn-primary mx-1'>Track</a>
 
               <form class='mx-1' action='/pet-update' method='get'>
                 <input type='hidden' name='id' value='".$pet[0]."'>
@@ -83,6 +83,8 @@
             </div>
         </div>
       </div>
+
+      
       
       
 

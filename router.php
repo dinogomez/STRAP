@@ -2,25 +2,56 @@
 
 session_start();
 
-$protected = array("/dashboard", "/user-profile", "/pet", "/pet-add");
+$protected_endpoints = array('/dashboard', '/user-profile',
+                       '/pet', '/pet-add', '/pet-update',
+                       '/tracker', '/pet-register', '/pet-update',
+                       '/pet-delete', '/tracker-delete', '/tracker-update',
+                       '/process-tracker-registration', '/logout',
+                       '/dogmarker', '/catmarker', '/othermarker');
 
 function get($route, $path_to_include){
-  // GLOBAL $protected;
-  // $result = in_array($route,$protected);
-  // if($result){
-  //   if(isset($_SESSION['isLoggedIn'])){
-  //     if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
-  //   }else {
-  //     header('Location: /');
-  //   } 
-  // } else {
-  //   if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
-  // }  
-  if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
+  global $protected_endpoints;
+  $result = in_array($route, $protected_endpoints);
+  
+  if($result){
+    if(!isset($_SESSION['isLoggedIn'])){
+      $route = '/';
+      if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
+    }else{
+      if($_SESSION['isLoggedIn']){
+        if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
+      }else{
+        $route = '/';
+        if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
+      }
+    }
+  }else{
+    if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
+  }
 
+
+
+ 
 }
 function post($route, $path_to_include){
-  if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ route($route, $path_to_include); }    
+  global $protected_endpoints;
+  $result = in_array($route, $protected_endpoints);
+  
+  if($result){
+    if(!isset($_SESSION['isLoggedIn'])){
+      $route = '/';
+      if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ route($route, $path_to_include); }  
+    }else{
+      if($_SESSION['isLoggedIn']){
+        if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ route($route, $path_to_include); }  
+      }else{
+        $route ='/';
+        if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ route($route, $path_to_include); }  
+      }
+    }
+  }else{
+    if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ route($route, $path_to_include); }  
+  }  
 }
 function put($route, $path_to_include){
   if( $_SERVER['REQUEST_METHOD'] == 'PUT' ){ route($route, $path_to_include); }    

@@ -7,6 +7,16 @@
         width: 100%;
         height: 600px;
       }
+
+      body{
+
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1181%26quot%3b)' fill='none'%3e%3cpath d='M-23.561%2c577.261C13.425%2c574.58%2c46.928%2c555.965%2c65.421%2c523.822C83.864%2c491.766%2c85.163%2c452.38%2c66.735%2c420.315C48.245%2c388.144%2c13.471%2c371.335%2c-23.561%2c368.997C-65.95%2c366.32%2c-112.263%2c372.314%2c-136.035%2c407.511C-162.246%2c446.319%2c-163.962%2c499.536%2c-138.096%2c538.574C-114.24%2c574.578%2c-66.638%2c580.383%2c-23.561%2c577.261' fill='rgba(244%2c 168%2c 65%2c 1)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1472.6145365047237-47.09272527645122L1344.2132000163635 166.60298454751154 1557.9089098403263 295.0043210358717 1686.3102463286864 81.30861121190897z' fill='rgba(15%2c 157%2c 88%2c 1)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1239.4993740399536 206.99036349403283L1321.9042991175336 52.009240025746635 1166.9231756492475-30.39568505183331 1084.5182505716675 124.58543841645289z' fill='rgba(219%2c 68%2c 88%2c 1)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1107.347154700069 589.3943281712214L968.6803235828786 748.9122698178885 1277.2906516114742 877.1535456703405z' fill='rgba(66%2c 133%2c 244%2c 1)' class='triangle-float3'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1181'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+
+        background-size:cover;
+    background-repeat:no-repeat;
+
+    
+  }
     </style>
 
 <div class="container">
@@ -16,15 +26,17 @@
 
 <?php include_once 'include/nav-dash.php';?>
 <?php 
-// echo '<pre>';
-// print_r($_SESSION);
-// echo '</pre>';
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
 
 ?>
 <div class="container-fluid">
   <section>
+
     <div class="row mt-4">
       <div class="col-12 mt-3 mb-1">
+        <hr>
         <h5 class="text-uppercase">Statistics</h5>
         <p>Your account metrics and statistics 📊.</p>
       </div>
@@ -68,7 +80,15 @@
                 <i class="fa-solid fa-paw text-success fa-3x"></i>
               </div>
               <div class="text-end">
-                <h3><?php echo count($_SESSION['pets']);?></h3>
+                <h3><?php if(isset($_SESSION['pets'])){
+                  
+                  echo count($_SESSION['pets']);
+                } else {
+                  echo 0;
+
+                }
+                  
+                  ?></h3>
                 <p class="mb-0">Pets</p>
               </div>
             </div>
@@ -110,10 +130,12 @@
           <div class='input-group my-2 form-inline'>
           <select class='form-select' name='trackID' aria-label='Default select' required>";
           
-          
+          $count = 0;
           foreach($_SESSION['trackers'] as $track){
             
-            echo "<option value='".$track[0]."'>".$track[2]."</option>";
+            echo "<option  value='".$track[0]."'>".$track[2]."</option>";
+
+            
   
           }
           
@@ -142,7 +164,9 @@ if(isset($_GET['trackID'])){
   $result = mysqli_query( $conn,$sql);
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
   $count = mysqli_num_rows($result);
-  $id = $row['deviceID'];
+  if($count > 0){
+    $id = $row['deviceID'];
+  }
   // echo '<pre>';
   // print_r($id);
  
@@ -154,6 +178,7 @@ if(isset($_GET['trackID'])){
   ?>
   
 <?php
+
   $sql = "SELECT * FROM gps WHERE deviceID='$id' ORDER BY id DESC limit 1";
 
   $result = mysqli_query( $conn,$sql);
@@ -185,22 +210,21 @@ if(isset($_GET['trackID'])){
      </div>";
       }
       
-     
       foreach($_SESSION['trackers'] as $tracker){
-        if($_GET['trackID'] == $tracker[0]){
+        if(isset($_GET['trackID']) && $_GET['trackID'] == $tracker[0]){
           $name =  $tracker[2];
         }
       }
      
+     
+    
       
       
       
       ?>
   <?php 
     
-   echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
+echo "<h1>".$id."</h1>";
   ?>
 
 
@@ -223,44 +247,43 @@ function initialize() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById("mapCanvas"), myOptions);
-
+   geocoder = new google.maps.Geocoder();
     
+   <?php
+   $icon;
+   $type;
+   if(isset($_GET['trackID'])){
+    foreach($_SESSION['pets'] as $pet){
+      if($pet[1] == $name){
+        $type = $pet[2];
+      }
+    }
+
+    if($type == 'Dog'){
+      $icon = '"/dogmarker"';
+    }elseif ($type == 'Cat') {
+      $icon = '"/catmarker"';
+    }else{
+      $icon = '"/othermarker"';
+    }
+   }
+   
+   
+   ?>
 
     marker = new google.maps.Marker({
         position: latlng,
         map: map,
-        icon: '/dogmarker',
+        icon: <?php echo $icon ?>,
         title: "Latitude:"+position[0]+" | Longitude:"+position[1]
     });
 
-    // const contentString =
-    // '<div id="content">'
-    // '<div id="siteNotice">' +
-    // "</div>" +
-    // "<h1 id='firstHeading'class='firstHeading'>Ulru</h1>" +
-    // '<div id="bodyContent">' +
-    // "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-    // "sandstone rock formation in the southern part of the " +
-    // "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-    // "south west of the nearest large town, Alice Springs; 450&#160;km " +
-    // "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-    // "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-    // "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-    // "Aboriginal people of the area. It has many springs, waterholes, " +
-    // "rock caves and ancient paintings. Uluru is listed as a World " +
-    // "Heritage Site.</p>" +
-    // '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-    // "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-    // "(last visited June 22, 2009).</p>" +
-    // "</div>" +
-    // "</div>";
 
-
-    const contentString = "<?php echo "<div id='content'><div id='siteNotice'></div><h1 id='firstHeading'class='firstHeading text-center'>".$tracker[2]."</h1><div id='bodyContent'><p>Latitude: ".$row['lat']." | Longitude: ".$row['lon']." </p></div></div>"; ?>";
+  contentString = "<?php echo "<div id='content'><div id='siteNotice'></div><h1 id='firstHeading'class='firstHeading text-center'>".$name."</h1><div id='bodyContent'><p>Latitude: </p></div></div>"; ?>";
 
  
 
-  const infowindow = new google.maps.InfoWindow({
+   infowindow = new google.maps.InfoWindow({
     content: contentString,
   });
 
@@ -272,8 +295,32 @@ function initialize() {
       shouldFocus: false,
     });
   });
+  geocodeLatLng();
 
 }
+
+
+function geocodeLatLng() {
+
+  latlngd = {
+    lat: position[0],
+    lng: position[1],
+  };
+
+  geocoder
+    .geocode({ location: latlngd })
+    .then((response) => {
+      if (response.results[0]) {
+        const contentStrings = "<?php echo "<div id='content'><div id='siteNotice'></div><h1 id='firstHeading'class='firstHeading text-center'>".$name."</h1><div id='bodyContent'><p>Is currently at <strong >" ?>"+response.results[0].formatted_address+"   <?php echo"</strong></p></div></div>"; ?>";
+        infowindow.setContent(contentStrings);
+
+      } else {
+        window.alert("No results found");
+      }
+    })
+    .catch((e) => window.alert("Geocoder failed due to: " + e));
+}
+
 
 //Load google map
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -290,20 +337,53 @@ function transition(result){
     deltaLat = (result[0] - position[0])/numDeltas;
     deltaLng = (result[1] - position[1])/numDeltas;
     moveMarker();
+    const reverseGeocodingUrl = `https://api.geoapify.com/v1/geocode/reverse?lat=${position[0]}&lon=${position[1]}&apiKey=5f89e21f254644c98c72ac4a5e972b52`;
+    // console.log(reverseGeocodingUrl)
+    
+    fetch(reverseGeocodingUrl).then(result => result.json())
+        .then(featureCollection => {
+          if (featureCollection.features.length === 0) {
+            document.getElementById("status").textContent = "The address is not found";
+            return;
+          }
+
+          const foundAddress = featureCollection.features[0];
+          
+
+          let formatAddress = `${foundAddress.properties.formatted}`;
+          // console.log(formatAddress);
+          const contentStrings = "<?php echo "<div id='content'><div id='siteNotice'></div><h1 id='firstHeading'class='firstHeading text-center'>".$name."</h1><div id='bodyContent'><p>Is currently at <strong >" ?>"+formatAddress+"   <?php echo"</strong></p></div></div>"; ?>";
+          infowindow.setContent(contentStrings);
+          
+        });
 }
 
 function moveMarker(){
     position[0] += deltaLat;
     position[1] += deltaLng;
+
+   
+    
+
+
+    
     var latlng = new google.maps.LatLng(position[0], position[1]);
+
+
+    map.setCenter(latlng);
+
+
     marker.setTitle("Latitude:"+position[0]+" | Longitude:"+position[1]);
     marker.setPosition(latlng);
+    
 
     if(i!=numDeltas){
         i++;
         setTimeout(moveMarker, delay);
     }
 }
+
+var oldcoords;
 
 function loadDoc() {
         
@@ -313,11 +393,14 @@ function loadDoc() {
           current_split = current[current.length-1].split(" ");
           console.log(current_split);
           var result = [current_split[0], current_split[1]];
+          
           transition(result);
+
+         
         };
-        xhttp.open("GET", "/gps-retrieve?did=1");
+        xhttp.open("GET", "/gps-retrieve?did=<?php echo $id ?>");
         xhttp.send();
-        setTimeout(loadDoc, 5000);
+        setTimeout(loadDoc, 10000);
       }
       loadDoc();
         

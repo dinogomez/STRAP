@@ -1,7 +1,7 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+ <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-  <i class="navbar-brand bg-secondary text-primary p-2 rounded shadow-lg fa-solid fa-paw"></i>
+  <i class="navbar-brand bg-morph text-dark p-2 rounded shadow-lg fa-solid fa-paw"></i>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -29,12 +29,12 @@
       <div class="d-flex">
       <form class="d-flex" action="/search" method="GET" method="GET">
           <div class="input-group me-2">
-        <input type="text" class="form-control" name="id"  placeholder="Pet Unique Id" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <input class="input-group-text btn btn-success" type="submit" value="Search" id="basic-addon2">
+        <input type="text" class="form-control" name="id"  placeholder="Enter A Pet's ID 🖋" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <input class="input-group-text btn btn-dark" type="submit" value="Search" id="basic-addon2">
       </div>        
       </form>
         <div class="nav-item dropdown">
-        <a class="btn btn-secondary nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['username']?></a>
+        <a class="btn btn-outline-dark  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">👋Hi, <?php echo $_SESSION['username']?></a>
       <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Edit Profile</a>
             <a class="dropdown-item" href="#">Request User Report</a>

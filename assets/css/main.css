@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 body {
   overflow-y: overlay !important;
   font-family: "IBM Plex Sans", sans-serif !important;
@@ -5,6 +7,10 @@ body {
 
 .font-ibm {
   font-family: "IBM Plex Sans", sans-serif;
+}
+
+.font-rubik {
+  font-family: "Rubik", sans-serif;
 }
 
 .text-20 {
@@ -69,4 +75,35 @@ body {
   background-size: 5px 100%;
   background-position: 0 0, 100% 0;
   background-repeat: no-repeat;
+}
+
+.bg-morph {
+  border-radius: 7px;
+  background: #ffffff;
+  box-shadow: 9px 9px 49px #adadad, -9px -9px 49px #ffffff;
+}
+
+.bg-glass {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.display-big {
+  font-size: calc(1.625rem + 4.5vw);
+  font-weight: 300;
+  line-height: 1.2;
+}
+@media (min-width: 1200px) {
+  .display-big {
+    font-size: 5rem;
+  }
+}
+
+.img-ledge {
+  position: absolute;
+
+  background: url(image.png);
 }

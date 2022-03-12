@@ -1,5 +1,7 @@
 <?php 
-
+if(session_id() == ''){
+    session_start();
+ }
 foreach($_SESSION['trackers'] as $tracker){
 
     echo "<tr>

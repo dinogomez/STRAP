@@ -6,12 +6,14 @@
 
 
     $userID = $_SESSION['id'];
+    
 
-
-    $sql = "SELECT trackers.id, pets.petNAME, devices.deviceID
+    $sql = "SELECT trackers.userID, trackers.id, pets.petNAME, devices.deviceID
      FROM trackers 
      LEFT JOIN pets ON trackers.petID = pets.id 
-     LEFT JOIN devices ON trackers.deviceID = devices.id";
+     LEFT JOIN devices ON trackers.deviceID = devices.id WHERE trackers.userID = '$userID'";
+
+      
     $result = mysqli_query( $conn,$sql);
     $count = mysqli_num_rows($result);
 

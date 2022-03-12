@@ -1,7 +1,6 @@
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-  <i class="navbar-brand bg-secondary text-primary p-2 rounded shadow-lg fa-solid fa-paw"></i>
+  <i class="navbar-brand bg-morph text-dark p-2 rounded shadow-lg fa-solid fa-paw"></i>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -39,13 +38,11 @@
           <a class="nav-link active disabled" href="/search">Search</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">FAQ</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Links</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">GPS</a>
-            <a class="dropdown-item" href="#">Pet Collar</a>
-            <a class="dropdown-item" href="#">Pet Interaction</a>
+            <a class="dropdown-item" href="https://github.com/dinogomez/htdocs">Github <i class="fa-brands fa-github fa-lg"></i></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Research Document</a>
+            <a class="dropdown-item" href="/document">Research Document <i class="fa-solid fa-file-lines fa-lg text-success"></i></a>
           </div>
         </li>
       <?php 
@@ -56,13 +53,13 @@
       <form class="d-flex" action="/search" method="GET" method="GET">
           <div class="input-group me-2">
         <input type="text" class="form-control" name="id"  placeholder="Pet Unique Id" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <input class="input-group-text btn btn-success" type="submit" value="Search" id="basic-addon2">
-      </div>        
+        <input class="input-group-text btn btn-dark shadow-lg" type="submit" value="Search" id="basic-addon2">
+      </div> 
       </form>
 
       <?php if(isset($_SESSION['isLoggedIn'])){?>
         <div class="nav-item dropdown">
-        <a class="btn btn-secondary nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['username']?></a>
+        <a class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">👋Hi, <?php echo $_SESSION['username']?></a>
       <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Edit Profile</a>
             <a class="dropdown-item" href="#">Request User Report</a>
@@ -73,7 +70,7 @@
         </div>
         <?php } else {?>
           
-      <a class="btn btn-secondary my-2 my-sm-0 px-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+      <a class="btn btn-dark my-2 my-sm-0 px-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
       <?php 
         }
       ?>
@@ -116,7 +113,7 @@
         <label class="form-check-label" for="formCheckDefault">Remember Me</label>
       </div>
         <hr>
-        <button type="submit" class="mt-2 btn btn-md w-100 btn-primary shadow">Login</button>
+        <button type="submit" class="mt-2 btn btn-md w-100 btn-dark shadow">Login</button>
         </form>
         <div class="text-center mt-3 ">
           <a href="" class="text-primary nav-link">Forgot Password?</a>
@@ -193,7 +190,7 @@
         </div>
      
         <hr>
-        <button type="submit" class="mt-2 btn btn-md w-100 btn-primary shadow">Create</button>
+        <button type="submit" class="mt-2 btn btn-md w-100 btn-dark shadow">Create</button>
         </form>
         </div>
       </div>
