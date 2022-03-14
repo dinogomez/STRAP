@@ -1,6 +1,7 @@
 <?php 
 
     require_once 'db/connection.php';
+    require 'process-log.php';
     if(session_id() == ''){
       session_start();
    }
@@ -56,6 +57,17 @@
         $stmt->execute();
 
         $stmt->close();
+
+        // Register Tracker Logs
+        $userID = $_SESSION['id'];
+
+        $sql = "SELECT * FROM trackers WHERE userID ='$userID'";
+        $result = mysqli_query( $conn,$sql);
+        $count = mysqli_num_rows($result);
+        
+        $event = "REGISTER";
+        $type = "TRACKER";
+        activityLog($userID, $event, $type, $conn);
         header('Location: /tracker');
 
       } catch (Exception $e) {

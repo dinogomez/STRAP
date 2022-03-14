@@ -1,17 +1,30 @@
 <?php 
 
     require_once 'db/connection.php';
+    require 'process-log.php';
     if(session_id() == ''){
         session_start();
      }
 
     try{
 
-        $id =  mysqli_real_escape_string($conn,$_POST['id']);
+    $id =  mysqli_real_escape_string($conn,$_POST['id']);
     $update = $conn->prepare("DELETE FROM pets WHERE id = ?");
     $update->bind_param('i', $id);
     $update->execute();
     $update->close();
+
+    // Delete Pet Logs
+    $userID = $_SESSION['id'];
+
+    $sql = "SELECT * FROM pets WHERE userID ='$userID'";
+    $result = mysqli_query( $conn,$sql);
+    $count = mysqli_num_rows($result);
+
+    $event = "DELETE";
+    $type = "PET";
+    activityLog($userID, $event, $type, $conn);
+
     header('Location: /pet');
 
     }catch(Exception $e){

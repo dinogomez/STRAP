@@ -1,6 +1,7 @@
 <?php 
 
     require_once 'db/connection.php';
+    require 'process-log.php';
     if(session_id() == ''){
       session_start();
    }
@@ -42,7 +43,7 @@
             $stmt->execute();
 
             $stmt->close();
-            
+
           } catch (Exception $e) {
               echo $e;
               header('Location: /pet');
@@ -52,8 +53,12 @@
           $sql = "SELECT * FROM pets WHERE userID ='$userID'";
           $result = mysqli_query( $conn,$sql);
           $count = mysqli_num_rows($result);
-      
-      
+          
+          // Register Pet Logs
+          $event = "REGISTER";
+          $type = "PET";
+          activityLog($userID, $event, $type, $conn);
+
           if ($count<= 0) {
             $_SESSION['noPets'] = true;
             if(isset($_SESSION['pets'])){

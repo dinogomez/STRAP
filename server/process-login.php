@@ -1,5 +1,6 @@
 <?php 
     require_once 'db/connection.php';
+    require 'process-log.php';
     
     session_start();
     
@@ -29,7 +30,6 @@
       $sql = "SELECT * FROM users WHERE username ='$username'";
       $result = mysqli_query($conn,$sql);
       
-  
       while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         //setting values
         $hash = $row['password'];
@@ -41,6 +41,11 @@
         $_SESSION['username'] = $username;
 
         $userID = $_SESSION['id'];
+
+        // Login Logs
+        $event = "LOGIN";
+        $type = "USER";
+        activityLog($userID, $event, $type, $conn);
 
     $sql = "SELECT * FROM pets WHERE userID ='$userID'";
     $result = mysqli_query( $conn,$sql);

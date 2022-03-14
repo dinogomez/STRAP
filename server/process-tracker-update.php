@@ -1,6 +1,7 @@
 <?php 
 
     require_once 'db/connection.php';
+    require 'process-log.php';
     if(session_id() == ''){
       session_start();
    }
@@ -28,6 +29,18 @@
         $sql = "UPDATE trackers SET petID = '$petID' where id = '$trackerID'";
 
         $result = mysqli_query($conn, $sql);
+
+        // Update Pet Logs
+        $userID = $_SESSION['id'];
+
+        $sql = "SELECT * FROM trackers WHERE userId ='$userID'";
+        $result = mysqli_query( $conn,$sql);
+        $count = mysqli_num_rows($result);
+        
+        $event = "UPDATE";
+        $type = "TRACKER";
+        activityLog($userID, $event, $type, $conn);
+
       } catch (Exception $e) {
         setcookie("trackerUpdateError", 
         "".$e->getMessage()."   ", 
