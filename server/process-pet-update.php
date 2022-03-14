@@ -1,7 +1,7 @@
 <?php 
 
     require_once 'db/connection.php';
-
+    require 'process-log.php';
 
   if($_FILES['pet_img']['name']!=''){
     $image = $_FILES['pet_img'];
@@ -50,6 +50,18 @@
             where id = '$id'";
     
             $result = mysqli_query($conn, $sqlImage);
+
+            // Update Pet Logs
+            $userID = $_SESSION['id'];
+
+            $sql = "SELECT * FROM pets WHERE userId ='$userID'";
+            $result = mysqli_query( $conn,$sql);
+            $count = mysqli_num_rows($result);
+            
+            $event = "UPDATE";
+            $type = "PET";
+            activityLog($userID, $event, $type, $conn);
+            
           } catch (Exception $e) {
               echo $e;
               header('Location:'.$header);
@@ -88,6 +100,18 @@ header('Location: '.$header);
     where id = '$id'";
 
     $result = mysqli_query($conn, $sqlImage);
+
+    // Update Pet Logs
+    $userID = $_SESSION['id'];
+
+    $sql = "SELECT * FROM pets WHERE userId ='$userID'";
+    $result = mysqli_query( $conn,$sql);
+    $count = mysqli_num_rows($result);
+    
+    $event = "UPDATE";
+    $type = "PET";
+    activityLog($userID, $event, $type, $conn);
+
     header('Location: /pet');
   }
 ?>
