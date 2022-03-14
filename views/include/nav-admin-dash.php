@@ -16,14 +16,10 @@
           <a class="nav-link active disabled" href="#">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/pet">Pet</a>
+          <a class="nav-link" href="/pet">Manage Logs</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/tracker">Tracker</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/search">Search</a>
-        </li>
+
+
       </ul>
       <div class="d-flex">
         <form class="d-flex" action="/search" method="GET" method="GET">
@@ -35,10 +31,8 @@
         <div class="nav-item dropdown">
           <a class="btn btn-outline-dark  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">👋Hi, <?php echo $_SESSION['username'] ?></a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/profile"><i class="fa-solid fa-user-pen me-2"></i> Edit Profile</a>
             <!-- <a class="dropdown-item" href="#"></a> -->
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open me-2"></i> Logout</a>
+            <a class="dropdown-item" href="/logout-admin"><i class="fa-solid fa-door-open me-2"></i> Logout</a>
           </div>
         </div>
       </div>

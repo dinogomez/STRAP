@@ -1,44 +1,45 @@
-<?php 
+<?php
+
 
     require_once 'db/connection.php';
     require 'process-log.php';
 
-  if($_FILES['pet_img']['name']!=''){
-    $image = $_FILES['pet_img'];
-  }
-    $id =  mysqli_real_escape_string($conn,$_POST['id']);
-    $petName = mysqli_real_escape_string($conn,$_POST['petName']);
-    $petType = mysqli_real_escape_string($conn,$_POST['petType']);
-    $petBreed = mysqli_real_escape_string($conn,$_POST['petBreed']);
-    $petDiet = mysqli_real_escape_string($conn,$_POST['petDiet']);
-    $petVaccine = mysqli_real_escape_string($conn,$_POST['petVaccine']);
+if ($_FILES['pet_img']['name'] != '') {
+  $image = $_FILES['pet_img'];
+}
+$id =  mysqli_real_escape_string($conn, $_POST['id']);
+$petName = mysqli_real_escape_string($conn, $_POST['petName']);
+$petType = mysqli_real_escape_string($conn, $_POST['petType']);
+$petBreed = mysqli_real_escape_string($conn, $_POST['petBreed']);
+$petDiet = mysqli_real_escape_string($conn, $_POST['petDiet']);
+$petVaccine = mysqli_real_escape_string($conn, $_POST['petVaccine']);
 
-    $petContactName = mysqli_real_escape_string($conn,$_POST['contactName']);
-    $petContactNumber =mysqli_real_escape_string($conn,$_POST['contactNumber']);
+$petContactName = mysqli_real_escape_string($conn, $_POST['contactName']);
+$petContactNumber = mysqli_real_escape_string($conn, $_POST['contactNumber']);
 
-    $header = "/pet-update?id=".$id;
-    // For Image Insertion into Database
-    if($_FILES['pet_img']['name']!=''){
+$header = "/pet-update?id=" . $id;
+// For Image Insertion into Database
+if ($_FILES['pet_img']['name'] != '') {
 
-    $imageName = $image['name'];
-    echo $imageName;
-    $fileType = $image['type'];
-    $fileSize = $image['size'];
-    $fileTmpName = $image['tmp_name'];
-    $fileError = $image['error'];
+  $imageName = $image['name'];
+  echo $imageName;
+  $fileType = $image['type'];
+  $fileSize = $image['size'];
+  $fileTmpName = $image['tmp_name'];
+  $fileError = $image['error'];
 
-    $fileImageData = explode("/",  $fileType);
-    $fileExtension = $fileImageData[count($fileImageData) - 1];
+  $fileImageData = explode("/",  $fileType);
+  $fileExtension = $fileImageData[count($fileImageData) - 1];
 
-    if($fileExtension == 'jpg' || $fileExtension == 'jpeg' || $fileExtension == 'png'){
-      
-      if($fileSize < 5000000){
-        $fileNewName = "assets/pet/".$imageName;
-        $uploaded = move_uploaded_file($fileTmpName, $fileNewName);
+  if ($fileExtension == 'jpg' || $fileExtension == 'jpeg' || $fileExtension == 'png') {
 
-        if($uploaded){
-          try {
-            $sqlImage = "UPDATE pets SET 
+    if ($fileSize < 5000000) {
+      $fileNewName = "assets/pet/" . $imageName;
+      $uploaded = move_uploaded_file($fileTmpName, $fileNewName);
+
+      if ($uploaded) {
+        try {
+          $sqlImage = "UPDATE pets SET 
             petName = '$petName', 
             petType = '$petType', 
             petBreed = '$petBreed', 
@@ -48,6 +49,7 @@
             ContactNumber = '$petContactNumber',
             petImg = '$fileNewName'
             where id = '$id'";
+
     
             $result = mysqli_query($conn, $sqlImage);
 
@@ -68,28 +70,37 @@
           }
           header('Location: /pet');
 
+          $result = mysqli_query($conn, $sqlImage);
+        } catch (Exception $e) {
+          echo $e;
+          header('Location:' . $header);
         }
-      }else {
-        setcookie("petImgError", 
-                      "<strong>Ohhh ohh!</strong>, File size too big.", 
-                      time() + (5), 
-                      "/");     
-                      
-        header('Location: '.$header);
-        exit();
+        header('Location: /pet');
       }
+    } else {
+      setcookie(
+        "petImgError",
+        "<strong>Ohhh ohh!</strong>, File size too big.",
+        time() + (5),
+        "/"
+      );
 
-    }else {
-        setcookie("petImgError", 
-        "<strong>Ohhh ohh!</strong>, Invalid file fornat.", 
-        time() + (5), 
-        "/");     
-        
-header('Location: '.$header);
+      header('Location: ' . $header);
       exit();
     }
   } else {
-    $sqlImage = "UPDATE pets SET 
+    setcookie(
+      "petImgError",
+      "<strong>Ohhh ohh!</strong>, Invalid file fornat.",
+      time() + (5),
+      "/"
+    );
+
+    header('Location: ' . $header);
+    exit();
+  }
+} else {
+  $sqlImage = "UPDATE pets SET 
     petName = '$petName', 
     petType = '$petType', 
     petBreed = '$petBreed', 
@@ -98,6 +109,7 @@ header('Location: '.$header);
     ContactName = '$petContactName',
     ContactNumber = '$petContactNumber'
     where id = '$id'";
+
 
     $result = mysqli_query($conn, $sqlImage);
 
