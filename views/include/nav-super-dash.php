@@ -15,10 +15,6 @@
         <li class="nav-item">
           <a class="nav-link active disabled" href="#">Dashboard</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/pet">Manage Logs</a>
-        </li>
-
 
       </ul>
       <div class="d-flex">

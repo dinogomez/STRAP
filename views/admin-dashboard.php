@@ -15,9 +15,9 @@
     <?php require_once 'include/nav-admin-dash.php' ?>
 
     <?php
-    echo '<pre>';
-    print_r($_SESSION);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($_SESSION);
+    // echo '</pre>';
 
     ?>
     <hr>

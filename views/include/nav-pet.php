@@ -42,11 +42,10 @@
             <div class="nav-item dropdown">
               <a class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">👋Hi, <?php echo $_SESSION['username'] ?></a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Edit Profile</a>
-                <a class="dropdown-item" href="#">Request User Report</a>
+                <a class="dropdown-item" href="/profile"><i class="fa-solid fa-user-pen me-2"></i> Edit Profile</a>
                 <!-- <a class="dropdown-item" href="#"></a> -->
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/logout">Logout</a>
+                <a class="dropdown-item" href="/logout"><i class="fa-solid fa-door-open me-2"></i> Logout</a>
               </div>
             </div>
           </div>

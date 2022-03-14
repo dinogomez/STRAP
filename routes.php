@@ -22,6 +22,7 @@ get('/pet-add', 'views/pet-add.php');
 get('/pet-update', 'views/pet-update.php');
 
 get('/tracker', 'views/tracker.php');
+get('/profile', 'views/profile.php');
 
 
 
@@ -48,8 +49,17 @@ post('/pet-register', 'server/process-pet-registration.php');
 post('/pet-update', 'server/process-pet-update.php');
 post('/pet-delete', 'server/process-pet-delete.php');
 
+post('/profile-update', 'server/process-profile-update.php');
+post('/password-update', 'server/process-password-update.php');
+
+
 post('/tracker-delete', 'server/process-tracker-delete.php');
 post('/tracker-update', 'server/process-tracker-update.php');
+
+
+post('/create-admin', 'server/process-create-admin.php');
+post('/create-device', 'server/process-create-device.php');
+
 
 post('/process-tracker-registration', 'server/process-tracker-registration.php');
 post('/report', 'server/process-report.php');
@@ -60,6 +70,7 @@ get('/logout-admin', 'server/process-logout.php');
 
 get('/su', 'views/admin.php');
 get('/admin', 'views/admin-dashboard.php');
+get('/super', 'views/super-dashboard.php');
 get('/admin-add', 'views/admin-add.php');
 
 get('/resolve', 'server/process-admin-resolve.php');

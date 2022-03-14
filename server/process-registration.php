@@ -130,7 +130,8 @@ try {
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
   $_SESSION['id'] = $row['id'];
-
+  $_SESSION['email'] = $row['email'];
+  $_SESSION['address'] = $row['address'];
   header('Location: /dashboard');
 } catch (Exception $e) {
   echo $e->getMessage();

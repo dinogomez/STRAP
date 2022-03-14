@@ -8,10 +8,10 @@ $protected_endpoints = array(
   '/tracker', '/pet-register', '/pet-update',
   '/pet-delete', '/tracker-delete', '/tracker-update',
   '/process-tracker-registration', '/logout',
-  '/dogmarker', '/catmarker', '/othermarker', '/acknowledge'
+  '/dogmarker', '/catmarker', '/othermarker', '/acknowledge', '/edit', '/profile-update', '/password-update'
 );
 
-$admin_endpoints = array('/admin', '/logout-admin', '/resolve', '/report-delete', '/notify');
+$admin_endpoints = array('/admin', '/logout-admin', '/resolve', '/report-delete', '/notify', '/super');
 
 function get($route, $path_to_include)
 {
