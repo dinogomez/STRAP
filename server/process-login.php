@@ -12,6 +12,7 @@ try {
         throw new Exception('You currently logged in as Admin');
     }
     if ($dbError) {
+
         throw new Exception('Could not connect to the database.');
     }
 
@@ -33,6 +34,7 @@ try {
     $result = mysqli_query($conn, $sql);
 
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
         //setting values
         $hash = $row['password'];
         $_SESSION['id'] = $row['id'];
@@ -46,9 +48,15 @@ try {
 
         $userID = $_SESSION['id'];
 
-        $sql = "SELECT * FROM pets WHERE userID ='$userID'";
-        $result = mysqli_query($conn, $sql);
-        $count = mysqli_num_rows($result);
+
+        // Login Logs
+        $event = "LOGIN";
+        $type = "USER";
+        activityLog($userID, $event, $type, $conn);
+
+    $sql = "SELECT * FROM pets WHERE userID ='$userID'";
+    $result = mysqli_query( $conn,$sql);
+    $count = mysqli_num_rows($result);
 
         if ($count <= 0) {
             $_SESSION['noPets'] = true;

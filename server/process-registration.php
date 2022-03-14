@@ -1,5 +1,7 @@
 <?php
 require_once 'db/connection.php';
+require 'process-log.php';
+
 if (session_id() == '') {
   session_start();
 }                 // REGISTRATION VARs
@@ -119,6 +121,19 @@ try {
   $stmt->execute();
 
   $stmt->close();
+  
+     // Register Logs
+      $query = "select * from users where username = '$username'";
+      $result = mysqli_query( $conn,$query);
+      $count = mysqli_num_rows($result);
+
+      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $userID = $row['id'];
+      }
+
+      $event = "REGISTER";
+      $type = "USER";
+      activityLog($userID, $event, $type, $conn);
 
   $_SESSION['isLoggedIn'] = true;
   $_SESSION['username'] = $username;
@@ -136,3 +151,4 @@ try {
 } catch (Exception $e) {
   echo $e->getMessage();
 }
+
