@@ -6,9 +6,9 @@ if (session_id() == '') {
 }
 
 
-$id =  mysqli_real_escape_string($conn, $_POST['id']);
-$update = $conn->prepare("DELETE FROM trackers WHERE id = ?");
+$id =  mysqli_real_escape_string($conn, $_GET['id']);
+$update = $conn->prepare("DELETE FROM reports WHERE id = ?");
 $update->bind_param('i', $id);
 $update->execute();
 $update->close();
-header('Location: /tracker');
+header('Location: /admin');

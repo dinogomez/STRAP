@@ -1,3 +1,12 @@
+<?php
+
+if ($_SESSION['role'] != "super") {
+  header('Location: /admin');
+}
+
+
+?>
+
 <?php require_once 'include/headers.php' ?>
 <style>
   body {
@@ -12,94 +21,19 @@
 
 <div class="container">
   <div class="mx-5 px-5">
-    <?php require_once 'include/nav-admin-dash.php' ?>
+    <?php require_once 'include/nav-admin-create.php' ?>
 
     <?php
-    echo '<pre>';
-    print_r($_SESSION);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($_SESSION);
+    // echo '</pre>';
 
     ?>
     <hr>
 
-    <div class="d-flex justify-content-end bg-glass p-3 my-2">
-      <div></div>
-      <div class="input-group " style="width: 15%;">
-        <div class="input-group-text"><i class="fa-solid fa-filter"></i></div>
-        <select onchange="val()" id="select_id" class="form-control" name="filter" aria-label="Small select">
-          <option value="all">All</option>
-          <option value="open">Open</option>
-          <option value="inprog">In Progress</option>
-          <option value="acknowledged">Acknowledged</option>
-          <option value="closed">Closed</option>
-        </select>
-      </div>
 
-    </div>
-
-    <?php
-
-    if (isset($_COOKIE['reportStatus'])) {
-      echo "<div class='alert alert-success text-center mb-3 mt-1' role='alert'>
-                 <strong>" . $_COOKIE['reportStatus'] . "</strong>.
-                </div>  <div class='text-center'>
-              </div>";
-    }
-    if (isset($_COOKIE['duplicateNotify'])) {
-      echo "<div class='alert alert-warning text-center mb-3 mt-1' role='alert'>
-                 <strong>" . $_COOKIE['duplicateNotify'] . "</strong>.
-                </div>  <div class='text-center'>
-              </div>";
-    }
-
-    ?>
-
-    <table class="table table-striped bg-glass">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">reports</th>
-          <th scope="col">userID</th>
-          <th scope="col">petID</th>
-          <th scope="col">Status</th>
-          <th scope="col">Time</th>
-          <th scope="col">Operation</th>
-
-        </tr>
-      </thead>
-      <tbody id="reportBody">
-
-
-      </tbody>
-    </table>
   </div>
 
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script>
-  d = "all";
 
-  function val() {
-    d = document.getElementById("select_id").value;
-  }
-
-  function loadDoc() {
-
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-      document.getElementById("reportBody").innerHTML = this.responseText;
-
-
-    };
-
-    console.log(d);
-    xhttp.open("GET", "/report-retrieve?filter=" + d, true);
-    xhttp.send();
-    setTimeout(loadDoc, 1000);
-  }
-
-  $(document).ready(function() {
-    loadDoc();
-  });
-</script>
 <?php require_once 'include/footers.php' ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2022 at 04:26 PM
+-- Generation Time: Mar 12, 2022 at 11:37 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -140,31 +140,7 @@ INSERT INTO `gps` (`id`, `deviceID`, `lat`, `lon`, `pingTime`) VALUES
 (58, 2, 14.777202222227, 120.9806941638, '2022-02-24T06:57:45'),
 (59, 1, 14.578323232361, 120.98069508416, '2022-02-24T06:57:45'),
 (60, 1, 14.323236089688, 120.98069508416, '2022-02-24T06:57:45'),
-(61, 1, 14.33608968807, 120.98069508416, '2022-02-24T06:57:45'),
-(62, 1, 14.578338607, 120.9806941638, '2022-02-24T06:57:45'),
-(63, 2, 14.578338608969, 120.98069508416, '2022-02-24T06:57:45');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `notifications`
---
-
-CREATE TABLE `notifications` (
-  `notifID` int(11) NOT NULL,
-  `reports` varchar(200) NOT NULL,
-  `petID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
-  `reportID` int(11) NOT NULL,
-  `isResolved` enum('OPEN','IN PROGRESS','CLOSED','ACKNOWLEDGED') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `notifications`
---
-
-INSERT INTO `notifications` (`notifID`, `reports`, `petID`, `userID`, `reportID`, `isResolved`) VALUES
-(10, 'Irrelevant Images or Text', 50, 13, 66, 'ACKNOWLEDGED');
+(61, 1, 14.33608968807, 120.98069508416, '2022-02-24T06:57:45');
 
 -- --------------------------------------------------------
 
@@ -193,8 +169,8 @@ CREATE TABLE `pets` (
 INSERT INTO `pets` (`id`, `petName`, `petType`, `petBreed`, `petDiet`, `petVaccine`, `ContactName`, `ContactNumber`, `petImg`, `userID`, `uniqid`) VALUES
 (48, 'Sammy', 'Dog', 'Pomeranian', 'Kibbles', 'Add', 'Dino Paulo Gomez', '+639151177924', 'assets/pet/274933331_552720812522257_518137637596335034_n.png', 13, '622b351c0134d'),
 (49, 'Enardo', 'Dog', 'Grub', 'A', 'A', 'A', 'A', 'assets/pet/274933331_552720812522257_518137637596335034_n.png', 19, '622b382672db1'),
-(50, 'Lily', 'Dog', 'A', 'Apol', 'A in 1', 'Dino Paulo Reyes Gomez', '+639151177924', 'assets/pet/rust.jpg', 13, '622c6868e9c80'),
-(52, 'Moonlight', 'Dog', 'Bombdog', 'Gunpowder and Sulfur', 'Anti-Bullet Pill', 'Owen Clamor', '+639151177924', 'assets/pet/275018470_494880725556185_6225285440711490463_n.jpg', 22, '622f5dba8e920');
+(50, 'Enardo', 'Cat', 'A', 'A', 'A', 'Dino Paulo Reyes Gomez', '+639151177924', 'assets/pet/rust.jpg', 13, '622c6868e9c80'),
+(51, '09151177924', 'Dog', 'Grub', 'A', 'A', 'Dino Paulo Reyes Gomez', '+639151177924', 'assets/pet/274874800_10225621148609204_2478445183771034066_n.jpg', 13, '622ca8bacb5d2');
 
 -- --------------------------------------------------------
 
@@ -207,19 +183,20 @@ CREATE TABLE `reports` (
   `reports` varchar(100) NOT NULL,
   `userID` int(11) NOT NULL,
   `petID` int(11) NOT NULL,
-  `isResolved` enum('OPEN','IN PROGRESS','CLOSED','ACKNOWLEDGED') NOT NULL DEFAULT 'OPEN',
-  `resolverID` int(11) NOT NULL,
-  `timeStamp` datetime NOT NULL DEFAULT current_timestamp()
+  `isResolved` tinyint(1) NOT NULL,
+  `resolverID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `reports`
+-- Table structure for table `sqltest`
 --
 
-INSERT INTO `reports` (`id`, `reports`, `userID`, `petID`, `isResolved`, `resolverID`, `timeStamp`) VALUES
-(65, 'Inappropriate Images or Text', 13, 50, 'CLOSED', 1, '2022-03-14 23:15:47'),
-(66, 'Irrelevant Images or Text', 13, 50, 'CLOSED', 1, '2022-03-14 23:15:50'),
-(67, 'Other', 13, 50, 'OPEN', 1, '2022-03-14 23:15:54');
+CREATE TABLE `sqltest` (
+  `id` int(11) NOT NULL,
+  `test` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -239,8 +216,8 @@ CREATE TABLE `trackers` (
 --
 
 INSERT INTO `trackers` (`id`, `deviceID`, `petID`, `userID`) VALUES
-(37, 1, 48, 13),
-(39, 2, 52, 22);
+(32, 1, 48, 13),
+(33, 2, 50, 13);
 
 -- --------------------------------------------------------
 
@@ -277,8 +254,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `address`, `password`, `user_ima
 (17, 'dinogomez21', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$1WGFwjgSFWI9LfhQwpWMWOcdQt.ual8h8h6Bih6sMSIKZIWaOGN72', NULL),
 (18, 'owenclamor', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$0I/JVn1n99E1UxGq6VKSMeGjufi4qIJZn5Pmldx/gOE/WLwIu2Yja', NULL),
 (19, 'dinogomez16', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$OD.1uMQ1HnOoQqXkQ1bRjuYBwiwPUWe3uoJTARonQrprqXHtbmNgi', NULL),
-(20, 'dinogomez15', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$v.53IB9f1c2.h60apF6.YuVG59y4SOD/H7m3dSSIMMQ8sOtKgqV2O', NULL),
-(22, 'snoopybob', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$rJgaWoSloF1niZZ5s0AyGeWoBcbQTZML.Jvkr77OGn0lPCbFx2oWK', NULL);
+(20, 'dinogomez15', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$v.53IB9f1c2.h60apF6.YuVG59y4SOD/H7m3dSSIMMQ8sOtKgqV2O', NULL);
 
 --
 -- Indexes for dumped tables
@@ -304,15 +280,6 @@ ALTER TABLE `gps`
   ADD KEY `deviceID` (`deviceID`);
 
 --
--- Indexes for table `notifications`
---
-ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`notifID`),
-  ADD KEY `petID` (`petID`),
-  ADD KEY `userID` (`userID`),
-  ADD KEY `reportID` (`reportID`);
-
---
 -- Indexes for table `pets`
 --
 ALTER TABLE `pets`
@@ -327,6 +294,12 @@ ALTER TABLE `reports`
   ADD KEY `petID` (`petID`),
   ADD KEY `userID` (`userID`),
   ADD KEY `resolverID` (`resolverID`);
+
+--
+-- Indexes for table `sqltest`
+--
+ALTER TABLE `sqltest`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `trackers`
@@ -363,37 +336,37 @@ ALTER TABLE `devices`
 -- AUTO_INCREMENT for table `gps`
 --
 ALTER TABLE `gps`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
-
---
--- AUTO_INCREMENT for table `notifications`
---
-ALTER TABLE `notifications`
-  MODIFY `notifID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sqltest`
+--
+ALTER TABLE `sqltest`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `trackers`
 --
 ALTER TABLE `trackers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
@@ -404,14 +377,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `gps`
   ADD CONSTRAINT `gps_ibfk_1` FOREIGN KEY (`deviceID`) REFERENCES `devices` (`id`);
-
---
--- Constraints for table `notifications`
---
-ALTER TABLE `notifications`
-  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`petID`) REFERENCES `pets` (`id`),
-  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `notifications_ibfk_3` FOREIGN KEY (`reportID`) REFERENCES `reports` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pets`
