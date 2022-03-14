@@ -1,0 +1,50 @@
+.navbar{
+    font-weight: bold;
+}
+.profile-pic{
+    border: solid 2px black;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 90%;
+}
+.edit-avatar{
+    margin-bottom: 30px;
+}
+.main-section{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.form-container{
+    padding: 60px;
+    border-radius: 5%;
+    width: 600px;
+    background-color: #EAD3CB;
+}
+
+.input-container{
+    margin-bottom: 10px;
+}
+.input-form{
+    margin-top: 30px;
+}
+
+.body-user-profile{
+    background-color: #845460;
+}
+
+.profile-container{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.username-container{
+    display: flex;
+    align-items: center;
+}
+
+.gear-icon{
+    margin-right: 30px;
+}

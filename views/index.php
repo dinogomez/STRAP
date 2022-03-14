@@ -1,197 +1,232 @@
 <?php require_once 'include/headers.php'?>
 
+<?php 
+  if(!isset($_SESSION)) 
+  {   
+    session_start(); 
+    
+  } 
+  ?>
+
+<style>
+  body{
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1185%26quot%3b)' fill='none'%3e%3cpath d='M2070.06%2c1100.205C2167.364%2c1096.535%2c2258.847%2c1048.87%2c2305.924%2c963.633C2351.571%2c880.985%2c2334.055%2c783.911%2c2291.223%2c699.769C2242.952%2c604.942%2c2176.122%2c508.832%2c2070.06%2c500.288C1951.539%2c490.74%2c1835.056%2c554.494%2c1777.172%2c658.358C1720.613%2c759.845%2c1737.033%2c885.83%2c1801.225%2c982.669C1859.141%2c1070.041%2c1965.31%2c1104.156%2c2070.06%2c1100.205' fill='rgba(66%2c 133%2c 244%2c 1)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M2.0565476666720173 617.8305822764671L-133.99468702556845 785.8398651409979 34.01459583896228 921.8910998332383 170.06583053120278 753.8818169687077z' fill='rgba(15%2c 157%2c 88%2c 1)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M944.5259820393588 223.2697603458331L1171.6667910273982 400.7316096012961 1349.128640282861 173.59080061325682 1121.9878312948217-3.871048642206148z' fill='rgba(244%2c 160%2c 38%2c 1)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M440.0912091892734 326.1338624754709L187.72094907078613 168.43542159404342 282.3927683078459 578.5041225939582z' fill='rgba(219%2c 68%2c 88%2c 1)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1185'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+    
+    background-size:cover;
+    background-repeat:no-repeat;
 
     
-        
-<?php
-   session_destroy();
+  }
+</style>
+
+
+
+
+<!-- && $_SESSION['errorRegister'] = true) -->
+
+<!-- 
+<div class="alert alert-dismissible alert-info text-center">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>Information!</strong> you are running on build <a href="https://github.com/dinogomez/htdocs/tree/DEV/PreRelease_Branch" class="alert-link">DEV/PreRelease</a>.
+</div> -->
+
+
+<div class="container">
+
+
+<div class="mx-5 px-5">
+ 
+<?php require_once 'include/nav-index.php';?>
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: 0 none;">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="text-center">
+          <h1 class="display-5 fw-bold">Login</h1>
+
+          </div>
+          <hr>
+          <?php 
+          
+            if(isset($_COOKIE['loginError']) && $_COOKIE['loginError']){
+                echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                                   '<strong>".$_COOKIE['loginError']."</strong>', Try Again.
+                                  </div>  <div class='text-center'>
+                                </div>";
+              }
+          ?>
+          
+        <form action="/process-login" method="post">
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Username</label>
+        <input type="text" name="username"class="form-control" id="usernameLogin">
+        </div>
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="passwordLogin" autocomplete="off">
+        </div>
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="formCheckDefault">
+        <label class="form-check-label" for="formCheckDefault">Remember Me</label>
+      </div>
+        <hr>
+        <button type="submit" class="mt-2 btn btn-md w-100 btn-dark shadow">Login</button>
+        </form>
+        <div class="text-center mt-3 ">
+          <a href="" class="text-primary nav-link">Forgot Password?</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+          <span class="">Dont have an account? <a class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Create Account</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php 
+
+
+
 ?>
+<!-- Register -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: 0 none;">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="text-center">
+          <h1 class="display-5 fw-bold">Sign Up!</h1>
+
+          </div>
+          <hr>
+          
+
+         
+         
+
+          <?php 
 
 
-<section class="jumbotron bg-image">
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0);"></div>
-        <nav class="navbar navbar-expand-xl navbar-light">
-            <div class="navbar-container container-fluid">
-              <a class="navbar-brand" href="#">
-                <img src="../assets/img/strap logo.png" alt="">  STRAP</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo2" aria-controls="navbarTogglerDemo2" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse show" id="navbarTogglerDemo2">
-                <ul class="navbar-nav  me-auto mb-2 mb-xl-0">
-                  <li class="nav-item">
-                    <a class="nav-item-link nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-item-link nav-link" href="#">About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-item-link nav-link" href="#">Services</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-item-link nav-link" href="#">Contact Us</a>
-                  </li>
-                </ul>
-                 
-              </div>
-              <form class="d-flex">
-                    <button class="nav-button btn btn-light me-2" type="button"><a class="login-button" href="/login">Log In</a></button>
-                    <button class="btn btn-sm btn-primary" type="button">Sign Up</button>
-                </form>
-            </div>
-          </nav>
 
-        <div class="mt-4 p-5 rounded jumbotron-container">
-            <p class="what-we-do">What We Do</p>
-            <h1 class="jumbotron-header">A Platform Build For Pets</h1>
+          
+            if (isset($_COOKIE['errorRegister'])) {
+              echo "<div class='alert alert-danger text-center mb-3 mt-1' role='alert'>
+                      ".$_COOKIE['errorRegister']."
+                    </div>  
+                    <div class='text-center'></div>";
+            }
+          
+          
+          ?>
+        <form action="/process-registration" method="post">
+            
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Username</label>
+        <input type="text" name="username"class="form-control" id="username" require>
         </div>
-    </section>
 
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Email</label>
+        <input type="email" name="email"class="form-control" id="email" require>
+        </div>
 
-    <section class=" row about-us-section">
-        <div class="col mt-4 p-5 rounded jumbotron-container aboutus-container">
-            <p class="aboutus">About Us</p>
-            <h1 class="aboutus-header">Specialized TRAcker for Pets (STRAP)</h1>
-            <p class="aboutus-desc"> It aims to provide real-time data location to the pets of the owner by using a Global Positioning System (GPS) collars.</p>
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Address</label>
+        <input type="text" name="address"class="form-control" id="address" require>
+        </div>
+
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="password" require>
+        </div>
+
+        <div class="my-3">
+        <label for="formControlInput" class="form-label">Confirm Password</label>
+        <input type="password" name="cpassword" class="form-control" id="cpassword" require>
+        </div>
      
-            <p class="aboutus-desc">Also, it is a platform for pet owners to store their pet’s identification information.</p>
-            <br>
-            
-            <button class="about-button btn btn-sm btn-outline-light" type="button">Learn More</button>
+        <hr>
+        <button type="submit" class="mt-2 btn btn-md w-100 btn-dark shadow">Create</button>
+        </form>
         </div>
-        <div class="col">
-            <img class="about-us-img"  src="../assets/img/yellow-lab.png" alt="">
-        </div>
-    </section>
-
-    <section class="features-section">
-        <h1 class="feature-header">STRAP'S OBJECTIVES</h1>
-        <div class="box-container">
-            <div class="box">
-                <img class="figure" src="../assets/icons/gps-img.png" alt="">
-                <h5 class="box-header">GPS Collar</h5>
-                <p>To build a GPS collar using Arduino for real-time data location of the pets.
-                </p>
-            </div>
-            <div class="box">
-                <img class="figure"  src="../assets/icons/web-img.png" alt="">
-                <h5 class="box-header">Web Application</h5>
-                <p>To create a web application that stores the pet’s identification information. </p>
-            </div>
-            <div class="box">
-                <img class="figure" src="../assets/icons/qr-img.png" alt="">
-                <h5 class="box-header">Quick Response Code</h5>
-                <p>To allow users to access the pet’s personal information using a Quick Response (QR) code from the specialized collar.
-                </p>
-            </div>
-        </div>
-        <div class="button-feature">
-            <button class="btn btn-sm btn-outline-light" type="button">Learn More</button>
-        
-    </section>
-
-
-
-
-
-
-
-    <!-- Footer -->
-<footer class="footer-section text-center text-lg-start bg-light text-muted">
-    <!-- Section: Social media -->
-    <section
-      class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-    >
-  
-      <!-- Left -->
-  
-      <!-- Right -->
-      <div>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-google"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-github"></i>
-        </a>
       </div>
-      <!-- Right -->
-    </section>
-    <!-- Section: Social media -->
-  
-    <!-- Section: Links  -->
-    <section class="">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            
-            <h6 class="text-uppercase fw-bold mb-4">
-                <img src="img/strap logo.png" alt="">
-              <i class="fas fa-gem me-3"></i>STRAP
-            </h6>
-            <p>
-                aims to provide real-time data location to the pets of the owner by using a Global Positioning System (GPS) collars. 
-            </p>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-                Menu
-            </h6>
-            <p>
-              <a href="#!" class="text-reset">Home</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">About</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Services</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Contact</a>
-            </p>
-          </div>
-          <!-- Grid column -->
 
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-                Contact
-            </h6>
-            
-            <p>
-              <i class="fas fa-envelope me-3"></i>
-              STRAP@examplegmail.com
-            </p>
-            
-            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-          </div>
-          <!-- Grid column -->
-        </div>
-        <!-- Grid row -->
+      <div class="modal-footer justify-content-center">
+          <span class="">Already have an account? <a class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign In!</a></span>
       </div>
-    </section>
-    <!-- Section: Links  -->
-  
-  </footer>
+    
+    </div>
+  </div>
+</div>
+
+ 
+<div class="mx-3 d-flex justify-content-end bg-glass">
+<div class="p-5 mt-3 mb-3">
+
+        <div class="text-center">
+          <div class="d-flex ">
+          <div class="px-2 me-4 ">
+
+          </div>
+            
+            <div class="">
+
+            </div>
+          </div>
+
+        <h1 class=" display-3 font-rubik fw-bolder lh-1" >Specialized Tracker For Pets</h1>
+
+        </div>
+<div class="d-flex">
+<div class="px-2 me-4 "></div>
+
+<h1 class="fs-6 font-rubik fw-bolder lh-1 text-black fst-italic" >STRAP™ is brought to you by<span class="text-primary fs-6  p-1">GAMECHANGERS</span></h1>
+
+</div>
+        <div class="d-flex  mt-2">
+          <div class="px-2 me-4 "></div>
+
+            <div class="">
+            <p class="fs-5 text-justify text-black lh-base">A web-based pet gps tracking platform which offers you the user, the capability to locate and track your pets with ease through our collar.  </p>
+
+            </div>
+            <div class="px-2 me-4 "></div>
+
+          </div>
+          <div class="mx-5 ">
+          <hr>
+                  <a class="fs-5 btn btn-dark btn-sm" href="/about">Read More</a>
+
+          </div>
+</div>
+</div>
+
+
+
+</div>
+<div class=" p-1"></div>
+<div class="d-flex justify-content-center m-4 p-4">
+<img src="assets/img/pet-look.png" class=" img-ledge shadow-md" style="width: 60%;" alt="">
+</div>
+
   <!-- Footer -->
+<!-- NAV -->
+<!-- MAIN CONTAINER -->
+</div>
+
+</div>
+
    
-<?php require_once 'include/footers.php'?>
+<?php require_once 'include/footers-index.php'?>

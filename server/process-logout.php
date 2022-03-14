@@ -1,13 +1,8 @@
 <?php
-ob_start();
+if(session_id() == ''){
     session_start();
-    if(isset($_SESSION['uid'])) {
+ } 
+    $_SESSION = array();
     session_destroy();
-    unset($_SESSION['username']);
-    unset($_SESSION['email']);
-    unset($_SESSION['address']);
-    header("Location: /login");
-    } else {
-    header("Location: /login");
-    }
+    header("Location: /");
 ?>
