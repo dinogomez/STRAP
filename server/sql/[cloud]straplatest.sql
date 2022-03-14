@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2022 at 10:57 PM
+-- Generation Time: Mar 14, 2022 at 11:09 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -35,27 +35,6 @@ CREATE TABLE `activity_logs` (
   `log_date` date DEFAULT current_timestamp(),
   `log_time` time DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `activity_logs`
---
-
-INSERT INTO `activity_logs` (`id`, `userId`, `event`, `type`, `log_date`, `log_time`) VALUES
-(30, 13, 'UPDATE', 'PET', '2022-03-15', '04:25:42'),
-(31, 13, 'REGISTER', 'PET', '2022-03-15', '04:28:02'),
-(32, 13, 'DELETE', 'PET', '2022-03-15', '04:28:16'),
-(33, 13, 'UPDATE', 'TRACKER', '2022-03-15', '04:28:37'),
-(34, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:28:46'),
-(35, 13, 'REGISTER', 'TRACKER', '2022-03-15', '04:28:59'),
-(36, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:29:08'),
-(37, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:29:23'),
-(38, 13, 'REGISTER', 'TRACKER', '2022-03-15', '04:29:26'),
-(39, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:29:28'),
-(40, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:31:00'),
-(41, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:31:00'),
-(42, 13, 'REGISTER', 'TRACKER', '2022-03-15', '04:31:22'),
-(43, 13, 'LOGOUT', 'USER', '2022-03-15', '04:33:31'),
-(44, 4, 'LOGOUT', 'USER', '2022-03-15', '05:46:31');
 
 -- --------------------------------------------------------
 
