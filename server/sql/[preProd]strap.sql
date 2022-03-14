@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2022 at 10:57 PM
+-- Generation Time: Mar 14, 2022 at 08:47 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -24,42 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `activity_logs`
---
-
-CREATE TABLE `activity_logs` (
-  `id` int(11) NOT NULL,
-  `userId` int(100) NOT NULL,
-  `event` varchar(100) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `log_date` date DEFAULT current_timestamp(),
-  `log_time` time DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `activity_logs`
---
-
-INSERT INTO `activity_logs` (`id`, `userId`, `event`, `type`, `log_date`, `log_time`) VALUES
-(30, 13, 'UPDATE', 'PET', '2022-03-15', '04:25:42'),
-(31, 13, 'REGISTER', 'PET', '2022-03-15', '04:28:02'),
-(32, 13, 'DELETE', 'PET', '2022-03-15', '04:28:16'),
-(33, 13, 'UPDATE', 'TRACKER', '2022-03-15', '04:28:37'),
-(34, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:28:46'),
-(35, 13, 'REGISTER', 'TRACKER', '2022-03-15', '04:28:59'),
-(36, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:29:08'),
-(37, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:29:23'),
-(38, 13, 'REGISTER', 'TRACKER', '2022-03-15', '04:29:26'),
-(39, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:29:28'),
-(40, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:31:00'),
-(41, 13, 'DELETE', 'TRACKER', '2022-03-15', '04:31:00'),
-(42, 13, 'REGISTER', 'TRACKER', '2022-03-15', '04:31:22'),
-(43, 13, 'LOGOUT', 'USER', '2022-03-15', '04:33:31'),
-(44, 4, 'LOGOUT', 'USER', '2022-03-15', '05:46:31');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `admin`
 --
 
@@ -75,7 +39,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `role`) VALUES
-(1, 'super', '$2y$10$EyGELBxv3TXvf5lccp1uM.UUMi.xl.NRMfJSwvWXvKJIlY4ECQPh6', 'super');
+(1, 'super', '$2y$10$EyGELBxv3TXvf5lccp1uM.UUMi.xl.NRMfJSwvWXvKJIlY4ECQPh6', 'super'),
+(4, 'admin17', '$2y$10$81KqKhbHPN7flX2CagzA5OvicG3bA0OfeiASTI0bYNOGZP4TLAq3m', 'admin');
 
 -- --------------------------------------------------------
 
@@ -196,6 +161,15 @@ CREATE TABLE `notifications` (
   `isResolved` enum('OPEN','IN PROGRESS','CLOSED','ACKNOWLEDGED') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`notifID`, `reports`, `petID`, `userID`, `reportID`, `isResolved`) VALUES
+(11, 'Inappropriate Images or Text, Irrelevant Images or Text', 48, 13, 68, 'ACKNOWLEDGED'),
+(12, 'Irrelevant Images or Text', 48, 13, 70, 'ACKNOWLEDGED'),
+(13, 'Inappropriate Images or Text', 48, 13, 69, 'IN PROGRESS');
+
 -- --------------------------------------------------------
 
 --
@@ -216,6 +190,16 @@ CREATE TABLE `pets` (
   `uniqid` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pets`
+--
+
+INSERT INTO `pets` (`id`, `petName`, `petType`, `petBreed`, `petDiet`, `petVaccine`, `ContactName`, `ContactNumber`, `petImg`, `userID`, `uniqid`) VALUES
+(48, 'Sammy', 'Dog', 'Pomeranian', 'Kibbles', 'Vaccine 1', 'Dino Paulo Gomez', '+639151177924', 'assets/pet/download.jpg', 13, '622b351c0134d'),
+(49, 'Enardo', 'Dog', 'Grub', 'A', 'A', 'A', 'A', 'assets/pet/274933331_552720812522257_518137637596335034_n.png', 19, '622b382672db1'),
+(50, 'Lily', 'Dog', 'A', 'Apol', 'A in 1', 'Dino Paulo Reyes Gomez', '+639151177924', 'assets/pet/rust.jpg', 13, '622c6868e9c80'),
+(52, 'Moonlight', 'Dog', 'Bombdog', 'Gunpowder and Sulfur', 'Anti-Bullet Pill', 'Owen Clamor', '+639151177924', 'assets/pet/275018470_494880725556185_6225285440711490463_n.jpg', 22, '622f5dba8e920');
+
 -- --------------------------------------------------------
 
 --
@@ -232,6 +216,16 @@ CREATE TABLE `reports` (
   `timeStamp` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `reports`
+--
+
+INSERT INTO `reports` (`id`, `reports`, `userID`, `petID`, `isResolved`, `resolverID`, `timeStamp`) VALUES
+(68, 'Inappropriate Images or Text, Irrelevant Images or Text', 13, 48, 'CLOSED', 1, '2022-03-15 03:39:31'),
+(69, 'Inappropriate Images or Text', 13, 48, 'IN PROGRESS', 1, '2022-03-15 03:42:05'),
+(70, 'Irrelevant Images or Text', 13, 48, 'ACKNOWLEDGED', 1, '2022-03-15 03:42:22'),
+(71, 'Other', 13, 48, 'OPEN', 1, '2022-03-15 03:42:26');
+
 -- --------------------------------------------------------
 
 --
@@ -244,6 +238,14 @@ CREATE TABLE `trackers` (
   `petID` int(11) NOT NULL,
   `userID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `trackers`
+--
+
+INSERT INTO `trackers` (`id`, `deviceID`, `petID`, `userID`) VALUES
+(37, 1, 48, 13),
+(39, 2, 52, 22);
 
 -- --------------------------------------------------------
 
@@ -282,13 +284,6 @@ INSERT INTO `users` (`id`, `username`, `email`, `address`, `password`) VALUES
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `activity_logs`
---
-ALTER TABLE `activity_logs`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `userId` (`userId`);
 
 --
 -- Indexes for table `admin`
@@ -354,12 +349,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `activity_logs`
---
-ALTER TABLE `activity_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
---
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
@@ -387,7 +376,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `reports`
@@ -399,7 +388,7 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `trackers`
 --
 ALTER TABLE `trackers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `users`
