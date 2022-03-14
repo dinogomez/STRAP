@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2022 at 08:47 PM
+-- Generation Time: Mar 14, 2022 at 04:26 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `role` enum('super','admin','','') NOT NULL
+  `role` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -39,8 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `role`) VALUES
-(1, 'super', '$2y$10$EyGELBxv3TXvf5lccp1uM.UUMi.xl.NRMfJSwvWXvKJIlY4ECQPh6', 'super'),
-(4, 'admin17', '$2y$10$81KqKhbHPN7flX2CagzA5OvicG3bA0OfeiASTI0bYNOGZP4TLAq3m', 'admin');
+(1, 'super', '$2y$10$EyGELBxv3TXvf5lccp1uM.UUMi.xl.NRMfJSwvWXvKJIlY4ECQPh6', 'super');
 
 -- --------------------------------------------------------
 
@@ -60,8 +59,7 @@ CREATE TABLE `devices` (
 INSERT INTO `devices` (`id`, `deviceID`) VALUES
 (1, '6b7b3d916c57729c'),
 (2, '7a6c2e826d68838b'),
-(3, '8c45383955595519'),
-(4, '7b34272844484408');
+(3, '8c45383955595519');
 
 -- --------------------------------------------------------
 
@@ -166,9 +164,7 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`notifID`, `reports`, `petID`, `userID`, `reportID`, `isResolved`) VALUES
-(11, 'Inappropriate Images or Text, Irrelevant Images or Text', 48, 13, 68, 'ACKNOWLEDGED'),
-(12, 'Irrelevant Images or Text', 48, 13, 70, 'ACKNOWLEDGED'),
-(13, 'Inappropriate Images or Text', 48, 13, 69, 'IN PROGRESS');
+(10, 'Irrelevant Images or Text', 50, 13, 66, 'ACKNOWLEDGED');
 
 -- --------------------------------------------------------
 
@@ -195,7 +191,7 @@ CREATE TABLE `pets` (
 --
 
 INSERT INTO `pets` (`id`, `petName`, `petType`, `petBreed`, `petDiet`, `petVaccine`, `ContactName`, `ContactNumber`, `petImg`, `userID`, `uniqid`) VALUES
-(48, 'Sammy', 'Dog', 'Pomeranian', 'Kibbles', 'Vaccine 1', 'Dino Paulo Gomez', '+639151177924', 'assets/pet/download.jpg', 13, '622b351c0134d'),
+(48, 'Sammy', 'Dog', 'Pomeranian', 'Kibbles', 'Add', 'Dino Paulo Gomez', '+639151177924', 'assets/pet/274933331_552720812522257_518137637596335034_n.png', 13, '622b351c0134d'),
 (49, 'Enardo', 'Dog', 'Grub', 'A', 'A', 'A', 'A', 'assets/pet/274933331_552720812522257_518137637596335034_n.png', 19, '622b382672db1'),
 (50, 'Lily', 'Dog', 'A', 'Apol', 'A in 1', 'Dino Paulo Reyes Gomez', '+639151177924', 'assets/pet/rust.jpg', 13, '622c6868e9c80'),
 (52, 'Moonlight', 'Dog', 'Bombdog', 'Gunpowder and Sulfur', 'Anti-Bullet Pill', 'Owen Clamor', '+639151177924', 'assets/pet/275018470_494880725556185_6225285440711490463_n.jpg', 22, '622f5dba8e920');
@@ -221,10 +217,9 @@ CREATE TABLE `reports` (
 --
 
 INSERT INTO `reports` (`id`, `reports`, `userID`, `petID`, `isResolved`, `resolverID`, `timeStamp`) VALUES
-(68, 'Inappropriate Images or Text, Irrelevant Images or Text', 13, 48, 'CLOSED', 1, '2022-03-15 03:39:31'),
-(69, 'Inappropriate Images or Text', 13, 48, 'IN PROGRESS', 1, '2022-03-15 03:42:05'),
-(70, 'Irrelevant Images or Text', 13, 48, 'ACKNOWLEDGED', 1, '2022-03-15 03:42:22'),
-(71, 'Other', 13, 48, 'OPEN', 1, '2022-03-15 03:42:26');
+(65, 'Inappropriate Images or Text', 13, 50, 'CLOSED', 1, '2022-03-14 23:15:47'),
+(66, 'Irrelevant Images or Text', 13, 50, 'CLOSED', 1, '2022-03-14 23:15:50'),
+(67, 'Other', 13, 50, 'OPEN', 1, '2022-03-14 23:15:54');
 
 -- --------------------------------------------------------
 
@@ -258,28 +253,32 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `user_image` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `address`, `password`) VALUES
-(4, 'dinogomez', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$ATufHakT2MpCQCTEPyqD3.9v5o0KsZPsBO6/q3QpET3K96aLtNy9O'),
-(5, 'dinogomez2', 'dinogomez117@gmail.com', 'Urgello', '$2y$10$hX6qxS6GowalWPNsdE87nOy5rpjsIyNz.v7lvuRcZ3mYyX.XDRSPC'),
-(7, 'alpha', 'dinogomez117@gmail.com', '2018', '$2y$10$S6I5TA9WgrFWLCJ.42A.C.1bIRbCxpb.qnrP6ZBQq1ZCA.KYpSydy'),
-(8, 'charlie@!', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$hU4dPXnKHGUjB.EDKGVeae3ZePmoSg0tX4f9rnvUSrph4kXL2qe/e'),
-(9, '@@@', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$zaYDFy26ZhtYcrpd9tg6eeWjYtdtrMtd1C6GZ9Q3D.yQ/aku1XC8u'),
-(10, 'alpha17', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$wbYct50H8iX0266X7UxVK.rcvv.Q0UBBCN7WQX1j78iq91oCZk/t.'),
-(11, 'newuser', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$7Ks8fOXlxr8aLQPXH.IzBOFGblP4nVUPbQ0HsP1HuWlB5KuhKIHJa'),
-(12, 'johndoe', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$50cnks83D6W1cz.HL8kLluUXSmglWujj8j.Noh3U.OTvz50kvsu/S'),
-(13, 'dinogomez17', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$wYLGhDwSoOM1aoteXo9M.OVcx3/0ZQbE0pnqLHYHXZCMQpWH11IHu'),
-(14, 'dinogomez17@@@!!', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$s0gzVNsboRQ346Vn/vFtl.ZGGuA0t9uc1sM3u9gaUZh4KnOVe9REm'),
-(19, 'dinogomez16', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$OD.1uMQ1HnOoQqXkQ1bRjuYBwiwPUWe3uoJTARonQrprqXHtbmNgi'),
-(20, 'dinogomez15', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$v.53IB9f1c2.h60apF6.YuVG59y4SOD/H7m3dSSIMMQ8sOtKgqV2O'),
-(22, 'snoopybob', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$rJgaWoSloF1niZZ5s0AyGeWoBcbQTZML.Jvkr77OGn0lPCbFx2oWK'),
-(23, 'alice172', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$kvYZ8D8Bjxc8z85C9SMdcOJV853OoBx2rJUQJBV2S0ZuE4Qt2PwAK');
+INSERT INTO `users` (`id`, `username`, `email`, `address`, `password`, `user_image`) VALUES
+(4, 'dinogomez', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$ATufHakT2MpCQCTEPyqD3.9v5o0KsZPsBO6/q3QpET3K96aLtNy9O', '90px-Trait_albino.png'),
+(5, 'dinogomez2', 'dinogomez117@gmail.com', 'Urgello', '$2y$10$hX6qxS6GowalWPNsdE87nOy5rpjsIyNz.v7lvuRcZ3mYyX.XDRSPC', NULL),
+(7, 'alpha', 'dinogomez117@gmail.com', '2018', '$2y$10$S6I5TA9WgrFWLCJ.42A.C.1bIRbCxpb.qnrP6ZBQq1ZCA.KYpSydy', NULL),
+(8, 'charlie@!', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$hU4dPXnKHGUjB.EDKGVeae3ZePmoSg0tX4f9rnvUSrph4kXL2qe/e', 'msagent-4.png'),
+(9, '@@@', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$zaYDFy26ZhtYcrpd9tg6eeWjYtdtrMtd1C6GZ9Q3D.yQ/aku1XC8u', NULL),
+(10, 'alpha17', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$wbYct50H8iX0266X7UxVK.rcvv.Q0UBBCN7WQX1j78iq91oCZk/t.', '90px-Trait_rakish.png'),
+(11, 'newuser', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$7Ks8fOXlxr8aLQPXH.IzBOFGblP4nVUPbQ0HsP1HuWlB5KuhKIHJa', NULL),
+(12, 'johndoe', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$50cnks83D6W1cz.HL8kLluUXSmglWujj8j.Noh3U.OTvz50kvsu/S', NULL),
+(13, 'dinogomez17', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$wYLGhDwSoOM1aoteXo9M.OVcx3/0ZQbE0pnqLHYHXZCMQpWH11IHu', NULL),
+(14, 'dinogomez17@@@!!', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$s0gzVNsboRQ346Vn/vFtl.ZGGuA0t9uc1sM3u9gaUZh4KnOVe9REm', NULL),
+(15, 'dinogomez18', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$oCuDQEf7h00dQ2lpV9W9heNmOvvfkg2YPkNomylz4S.mUIXld1OFy', NULL),
+(16, 'dinogomez20', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$TpxXIDbCgwHIT8iztherh.2CpCKVu9AbZAErWWbRADgHaZrGSNCVy', NULL),
+(17, 'dinogomez21', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$1WGFwjgSFWI9LfhQwpWMWOcdQt.ual8h8h6Bih6sMSIKZIWaOGN72', NULL),
+(18, 'owenclamor', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$0I/JVn1n99E1UxGq6VKSMeGjufi4qIJZn5Pmldx/gOE/WLwIu2Yja', NULL),
+(19, 'dinogomez16', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$OD.1uMQ1HnOoQqXkQ1bRjuYBwiwPUWe3uoJTARonQrprqXHtbmNgi', NULL),
+(20, 'dinogomez15', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$v.53IB9f1c2.h60apF6.YuVG59y4SOD/H7m3dSSIMMQ8sOtKgqV2O', NULL),
+(22, 'snoopybob', 'dinogomez117@gmail.com', 'Ermita, Roxas Blvd', '$2y$10$rJgaWoSloF1niZZ5s0AyGeWoBcbQTZML.Jvkr77OGn0lPCbFx2oWK', NULL);
 
 --
 -- Indexes for dumped tables
@@ -352,13 +351,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `devices`
 --
 ALTER TABLE `devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `gps`
@@ -370,7 +369,7 @@ ALTER TABLE `gps`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notifID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `notifID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `pets`
@@ -382,7 +381,7 @@ ALTER TABLE `pets`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `trackers`
@@ -394,7 +393,7 @@ ALTER TABLE `trackers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
