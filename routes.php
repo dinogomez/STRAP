@@ -34,9 +34,12 @@ get('/gps', 'server/process-gps.php');
 get('/gps-retrieve', 'server/process-gps-retrieve.php');
 
 get('/report-retrieve', 'server/process-retrieve-reports.php');
+get('/logs-retrieve', 'server/process-retrieve-logs.php');
 get('/report-delete', 'server/process-report-delete.php');
+get('/logs-delete', 'server/process-logs-delete.php');
 
 get('/ack', 'server/process-acknowledge.php');
+get('/logs', 'views/logs.php');
 
 // POST
 post('/process-login', 'server/process-login.php');

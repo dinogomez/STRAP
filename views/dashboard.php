@@ -316,7 +316,8 @@
         });
 
 
-        contentString = "<?php echo "<div id='content'><div id='siteNotice'></div><h1 id='firstHeading'class='firstHeading text-center'>" . $name . "</h1><div id='bodyContent'><p>Latitude: </p></div></div>"; ?>";
+        contentString = "<?php echo " < div id = 'content' > < div id = 'siteNotice' > < /div><h1 id='firstHeading'class='firstHeading text-center'>" . $name . "</h
+    1 > < div id = 'bodyContent' > < p > Latitude: < /p></div > < /div>"; ?>";
 
 
 
@@ -350,7 +351,8 @@
           })
           .then((response) => {
             if (response.results[0]) {
-              const contentStrings = "<?php echo "<div id='content'><div id='siteNotice'></div><h1 id='firstHeading'class='firstHeading text-center'>" . $name . "</h1><div id='bodyContent'><p>Is currently at <strong >" ?>" + response.results[0].formatted_address + "   <?php echo "</strong></p></div></div>"; ?>";
+              const contentStrings = "<?php echo " < div id = 'content' > < div id = 'siteNotice' > < /div><h1 id='firstHeading'class='firstHeading text-center'>" . $name . "</h
+                1 > < div id = 'bodyContent' > < p > Is currently at < strong > " ?>" + response.results[0].formatted_address + "   <?php echo " < /strong></p > < /div></div > "; ?>";
               infowindow.setContent(contentStrings);
 
             } else {
@@ -391,7 +393,8 @@
 
             let formatAddress = `${foundAddress.properties.formatted}`;
             // console.log(formatAddress);
-            const contentStrings = "<?php echo "<div id='content'><div id='siteNotice'></div><h1 id='firstHeading'class='firstHeading text-center'>" . $name . "</h1><div id='bodyContent'><p>Is currently at <strong >" ?>" + formatAddress + "   <?php echo "</strong></p></div></div>"; ?>";
+            const contentStrings = "<?php echo " < div id = 'content' > < div id = 'siteNotice' > < /div><h1 id='firstHeading'class='firstHeading text-center'>" . $name . "</h
+            1 > < div id = 'bodyContent' > < p > Is currently at < strong > " ?>" + formatAddress + "   <?php echo " < /strong></p > < /div></div > "; ?>";
             infowindow.setContent(contentStrings);
 
           });

@@ -1,8 +1,10 @@
 <?php
 require_once 'db/connection.php';
+require 'process-log.php';
 
-session_start();
-
+if (session_id() == '') {
+    session_start();
+}
 $username = mysqli_real_escape_string($conn, $_POST['username']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 
@@ -54,9 +56,9 @@ try {
         $type = "USER";
         activityLog($userID, $event, $type, $conn);
 
-    $sql = "SELECT * FROM pets WHERE userID ='$userID'";
-    $result = mysqli_query( $conn,$sql);
-    $count = mysqli_num_rows($result);
+        $sql = "SELECT * FROM pets WHERE userID ='$userID'";
+        $result = mysqli_query($conn, $sql);
+        $count = mysqli_num_rows($result);
 
         if ($count <= 0) {
             $_SESSION['noPets'] = true;

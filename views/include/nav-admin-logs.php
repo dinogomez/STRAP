@@ -13,10 +13,10 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active disabled" href="#">Reports</a>
+          <a class="nav-link " href="/admin">Reports</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/logs">Logs</a>
+          <a class="nav-link active disabled" href="/logs">Logs</a>
         </li>
 
 

@@ -11,7 +11,7 @@ $protected_endpoints = array(
   '/dogmarker', '/catmarker', '/othermarker', '/acknowledge', '/edit', '/profile-update', '/password-update'
 );
 
-$admin_endpoints = array('/admin', '/logout-admin', '/resolve', '/report-delete', '/notify', '/super');
+$admin_endpoints = array('/admin', '/logout-admin', '/resolve', '/report-delete', '/notify', '/super', '/logs');
 
 function get($route, $path_to_include)
 {

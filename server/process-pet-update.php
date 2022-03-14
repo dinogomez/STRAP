@@ -71,10 +71,7 @@ if ($_FILES['pet_img']['name'] != '') {
           header('Location: /pet');
 
           $result = mysqli_query($conn, $sqlImage);
-        } catch (Exception $e) {
-          echo $e;
-          header('Location:' . $header);
-        }
+        
         header('Location: /pet');
       }
     } else {
@@ -126,4 +123,3 @@ if ($_FILES['pet_img']['name'] != '') {
 
     header('Location: /pet');
   }
-?>

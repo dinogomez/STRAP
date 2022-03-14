@@ -22,9 +22,11 @@
     ?>
     <hr>
 
-    <div class="d-flex justify-content-end bg-glass p-3 my-2">
-      <div></div>
-      <div class="input-group " style="width: 15%;">
+    <div class="d-flex justify-content-between bg-glass p-3 w-100 border align-items-center mb-2">
+      <div>
+        <h1 class="fs-5">REPORTS 🚩</h1>
+      </div>
+      <div class="input-group " style="width: 20%;">
         <div class="input-group-text"><i class="fa-solid fa-filter"></i></div>
         <select onchange="val()" id="select_id" class="form-control" name="filter" aria-label="Small select">
           <option value="all">All</option>
@@ -58,9 +60,9 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">reports</th>
-          <th scope="col">userID</th>
-          <th scope="col">petID</th>
+          <th scope="col">Reason</th>
+          <th scope="col">User</th>
+          <th scope="col">Pet</th>
           <th scope="col">Status</th>
           <th scope="col">Time</th>
           <th scope="col">Operation</th>
